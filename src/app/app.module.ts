@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { DbzModule } from './dbz/dbz.module';
 
 import { CapturaActividadModule } from './intranet/CapturaAct.module';
 
@@ -12,7 +13,8 @@ import { CapturaActividadModule } from './intranet/CapturaAct.module';
   ],
   imports: [
     BrowserModule,
-    CapturaActividadModule
+    CapturaActividadModule,
+    DbzModule
   ],
   providers: [],
   bootstrap: [AppComponent]

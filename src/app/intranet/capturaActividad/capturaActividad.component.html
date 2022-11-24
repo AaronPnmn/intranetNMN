@@ -2,8 +2,8 @@
     <div class="card-body">
       <div class="header">
         <div class="uno">
-          <h5 class="card-title">{{ nombreActividad }}</h5>
-          <h6 *ngIf=" prioridadAlta == true " class="card-subtitle ms-2 text-muted">Prioridad Alta</h6>
+          <h5 class="card-title">{{ actividad.nombre }}</h5>
+          <h6 *ngIf=" actividad.prioridadAlta == true " class="card-subtitle ms-2 text-muted">Prioridad Alta</h6>
         </div>
         <div class="dos">
           <div class="botonCirc Editar"></div>
@@ -18,9 +18,9 @@
       </div>
   
       <div class="infoBlock">
-        <div>{{ cliente }} - {{ proyecto }}</div>
-        <div>Creada por: {{ autor }}</div>
-        <div>Fecha: {{ fecha }}</div>
+        <div>{{actividad.cliente}} - {{actividad.proyecto}}</div>
+        <div>Creada por: {{actividad.autor}} </div>
+        <div>Fecha: {{actividad.fecha}} </div>
       </div>
   
       <div class="secSeparador">
@@ -34,25 +34,22 @@
           class="form-control"
           placeholder="Inicio"
           aria-label="Inicio"
+          [value]="horaInicio + ' : ' + minutoInicio + ' : ' + segundoInicio"
         />
         <input
           type="text"
           class="form-control"
           placeholder="Fin"
           aria-label="Fin"
+          [value]="horaFinal + ' : ' + minutoFinal + ' : ' + segundoFinal"
         />
         <input
           type="text"
           class="form-control"
           placeholder="Total"
           aria-label="Total"
+          [value]="actividad.tiempoAcumulado.hora + ' : ' + actividad.tiempoAcumulado.minuto + ' : ' + actividad.tiempoAcumulado.segundo"
         />
-      </div>
-
-      <div class="temporal">
-        <p>{{tiempoInicio}}</p>
-        <p>{{tiempoFin}}</p>
-        <p>{{hora}} : {{minutos}} : {{segundos}}</p>
       </div>
   
       <div class="secSeparador">
@@ -72,25 +69,26 @@
         <div class="linea"></div>
         <div class="separadorLabel">Check List</div>
       </div>
-  
-      <div *ngFor="let dato of checkList" class="form-check">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="lista1"
-          checked
-        />
-        <label class="form-check-label" for="lista1">
-          {{ checkList[0][0] }}
-        </label>
+      <div *ngIf=" actividad.lista.length != 0" class="listWrapp">
+        <div *ngFor="let dato of actividad.lista; let i = index" class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [value]="actividad.lista[i].estatus"
+            [id]="'lista' + i"
+            [checked]="actividad.lista[i].estatus"
+          />
+          <label class="form-check-label" [for]="'lista' + i">
+            {{ actividad.lista[i].contenido }}
+          </label>
+        </div>
       </div>
       <button type="button" class="btn btn-outline-secondary m">Agregar elemento</button>
 
   
       <div class="footer">
         <button type="button" class="btn btn-outline-danger">Eliminar Actividad</button>
-        <button (click)="start()" type="button" class="btn btn-outline-secondary">{{buttonLabel}}</button>
+        <button (click)="start()" type="button" class="btn btn-outline-secondary">{{ buttonLabel }}</button>
         <button (click)="stop()" type="button" class="btn btn-outline-success">Detener</button>
         <button type="button" class="btn btn-outline-success">Guardar</button>
       </div>
