@@ -25,7 +25,7 @@ export class CapturaActividadComponent {
 
 
   // -----------------------------
-  // ----- Inicia CRONOMETRO -----
+  // ----- Inicia CRONOMETRO ----- prueba
   // -----------------------------
 
   public hora:number = 0;
