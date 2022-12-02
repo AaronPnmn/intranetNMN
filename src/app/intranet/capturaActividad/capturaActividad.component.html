@@ -23,35 +23,52 @@
         <div>Fecha: {{actividad.fecha}} </div>
       </div>
   
+
+
+      <!-- --- componente hijo --- -->
+
       <div class="secSeparador">
         <div class="linea"></div>
         <div class="separadorLabel">Registro de tiempo</div>
       </div>
-  
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Inicio"
-          aria-label="Inicio"
-          [value]="horaInicio + ' : ' + minutoInicio + ' : ' + segundoInicio"
-        />
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Fin"
-          aria-label="Fin"
-          [value]="horaFinal + ' : ' + minutoFinal + ' : ' + segundoFinal"
-        />
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Total"
-          aria-label="Total"
-          [value]="actividad.tiempoAcumulado.hora + ' : ' + actividad.tiempoAcumulado.minuto + ' : ' + actividad.tiempoAcumulado.segundo"
-        />
+
+      <div class="inputWrapper mb-3 controlTiempo">
+        <div class="inputBox">
+          <input
+            type="text"
+            class="inicio first"
+            placeholder="Inicio"
+            aria-label="Inicio"
+            [value]="horaInicio + ' : ' + minutoInicio + ' : ' + segundoInicio"
+          />
+          <span>Inicio</span>
+        </div>
+        <div class="inputBox">
+          <input
+            type="text"
+            class="final mid"
+            placeholder="Fin"
+            aria-label="Fin"
+            [value]="horaFinal + ' : ' + minutoFinal + ' : ' + segundoFinal"
+          />
+          <span>Final</span>
+        </div>
+        <div class="inputBox">
+          <input
+            type="text"
+            class="total last"
+            placeholder="Total"
+            aria-label="Total"
+            [value]="actividad.tiempoAcumulado.hora + ' : ' + actividad.tiempoAcumulado.minuto + ' : ' + actividad.tiempoAcumulado.segundo"
+          />
+          <span>Total</span>
+        </div>
       </div>
-  
+
+      <!-- --- componente hijo --- -->
+
+
+
       <div class="secSeparador">
         <div class="linea"></div>
         <div class="separadorLabel">Descripción</div>
@@ -65,6 +82,9 @@
         ></textarea>
       </div>
   
+
+      <!-- --- componente hijo --- -->
+
       <div class="secSeparador">
         <div class="linea"></div>
         <div class="separadorLabel">Check List</div>
@@ -83,9 +103,11 @@
           </label>
         </div>
       </div>
-      <button type="button" class="btn btn-outline-secondary m">Agregar elemento</button>
-
+      <button type="button" class="btn btn-outline-secondary ms-4 mt-2">Agregar elemento</button>
   
+      <!-- --- componente hijo --- -->
+
+      
       <div class="footer">
         <button type="button" class="btn btn-outline-danger">Eliminar Actividad</button>
         <button (click)="start()" type="button" class="btn btn-outline-secondary">{{ buttonLabel }}</button>
