@@ -1,0 +1,108 @@
+<div class="secSeparador">
+    <div class="linea"></div>
+    <div class="separadorLabel">Información</div>
+</div>
+
+<div class="infoBlock">
+    <div>{{actividad.cliente}} - {{actividad.proyecto}}</div>
+    <div>Creada por: {{actividad.autor}} </div>
+    <div>Fecha: {{actividad.fecha}} </div>
+</div>
+
+<!-- ------------ separador ------------ -->
+
+<div class="secSeparador">
+    <div class="linea"></div>
+    <div class="separadorLabel">Registro de tiempo</div>
+</div>
+
+<div class="inputWrapper mb-3 controlTiempo">
+    <div class="inputBox">
+        <input
+        type="text"
+        class="inicio first"
+        placeholder="Inicio"
+        aria-label="Inicio"
+        [value]="acumuladorInicial.hora + ':' + acumuladorInicial.minuto + ' hrs'"
+        />
+        <span>Inicio</span>
+    </div>
+    <div class="inputBox">
+        <input
+        type="text"
+        class="final mid"
+        placeholder="Fin"
+        aria-label="Fin"
+        [value]="acumuladorFinal.hora + ':' + acumuladorFinal.minuto + ' hrs'"
+        />
+        <span>Final</span>
+    </div>
+    <div class="inputBox">
+        <input
+        type="text"
+        class="total last"
+        placeholder="Total"
+        aria-label="Total"
+        [value]="actividad.tiempoAcumulado.hora + ' : ' + actividad.tiempoAcumulado.minuto + ' : ' + actividad.tiempoAcumulado.segundo"
+        />
+        <span>Total</span>
+    </div>
+</div>
+
+<!-- ------------ separador ------------ -->
+
+<div class="secSeparador">
+    <div class="linea"></div>
+    <div class="separadorLabel">Descripción</div>
+  </div>
+
+<div class="input-group">
+    <textarea
+        class="form-control"
+        aria-label="With textarea"
+        placeholder="Añadir descripción detallada"
+    ></textarea>
+</div>
+
+<!-- ------------ separador ------------ -->
+
+<div class="secSeparador">
+    <div class="linea"></div>
+    <div class="separadorLabel">Check List</div>
+  </div>
+
+<div *ngIf=" actividad.lista.length != 0" class="listWrapp">
+    <div *ngFor="let dato of actividad.lista; let i = index" class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        [value]="dato.estatus"
+        [id]="'lista' + i"
+        [checked]="dato.estatus"
+      />
+      <label class="form-check-label" [for]="'lista' + i">
+        {{ dato.contenido }}
+      </label>
+    </div>
+</div>
+
+<form class="input-group mt-3" (ngSubmit)="agregarCheckList()">
+    <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Escribe algo"
+        name="contenido"
+        [(ngModel)]="nuevo.contenido"
+    >
+    <div class="input-group-append">
+      <button class="btn btn-secondary agregarCheck" type="submit">Agregar elemento</button>
+    </div>
+</form>
+
+
+
+<div class="footer">
+    <button type="button" class="btn btn-outline-danger">Eliminar Actividad</button>
+    <button (click)="startCrono()" type="button" class="btn btn-outline-secondary">{{ buttonLabel }}</button>
+    <button type="button" class="btn btn-outline-success">Guardar</button>
+</div>

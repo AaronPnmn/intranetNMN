@@ -1,0 +1,26 @@
+<div class="card m-5 capturarActividad">
+    <div class="card-body">
+
+      <div class="header">
+        <div class="uno">
+          <h5 class="card-title" *ngIf=" estado == 'captura' ">{{ actividad.nombre }}</h5>
+          <h5 class="card-title" *ngIf=" estado == 'editar' ">Editar Actividad</h5>
+          <h5 class="card-title" *ngIf=" estado == 'copiar' ">Copiar Actividad</h5>
+          <h6 *ngIf=" actividad.prioridadAlta == true && estado == 'captura' " class="card-subtitle ms-2 text-muted">Prioridad Alta</h6>
+        </div>
+        <div class="dos">
+          <div class="botonCirc Editar" (click)="cambiaEstado('editar')">e</div>
+          <div class="botonCirc Duplicar" (click)="cambiaEstado('copiar')">c</div>
+          <div class="botonCirc Salir" (click)="cambiaEstado('captura')">x</div>
+        </div>
+      </div>
+
+      <app-estado-captura [actividad]="actividad" *ngIf=" estado == 'captura' "></app-estado-captura>
+
+      <app-estado-duplicar [actividad]="actividad" *ngIf=" estado == 'copiar' "></app-estado-duplicar>
+
+      <app-estado-edicion [actividad]="actividad" *ngIf=" estado == 'editar' "></app-estado-edicion>
+
+    </div>
+  </div>
+  

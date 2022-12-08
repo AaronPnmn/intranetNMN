@@ -1,0 +1,118 @@
+<div class="secSeparador">
+    <div class="linea"></div>
+    <div class="separadorLabel">Información</div>
+</div>
+
+
+<input
+    class="form-control mb-3"
+    placeholder="Titulo de actividad"
+    [value]="actividad.nombre"
+/>
+
+<select class="form-select mb-3" aria-label="Default select">
+    <option selected *ngFor="let colaborador of colaboradores; let i = index">{{colaborador}}</option>
+</select>
+
+<input class="form-control mb-3" type="date" [value]="actividad.fecha"/>
+
+<div class="input-group">
+    <select class="form-select mb-3" aria-label="Default select">
+        <option [selected]="cliente === actividad.cliente" *ngFor="let cliente of clientes; let i = index">{{cliente}}</option>
+    </select>
+    <select class="form-select mb-3" aria-label="Default select">
+        <option [selected]="proyecto === actividad.proyecto" *ngFor="let proyecto of proyectos; let i = index">{{proyecto}}</option>
+    </select>
+</div>
+
+<div class="secSeparador">
+    <div class="linea"></div>
+    <div class="separadorLabel">Registro de tiempo</div>
+</div>
+
+<div class="inputWrapper mb-3 controlTiempo">
+    <div class="inputBox">
+        <input
+        type="text"
+        class="inicio first"
+        placeholder="Inicio"
+        aria-label="Inicio"
+        [value]="horaInicial + ' : ' + minutoInicial"
+        />
+        <span>Inicio</span>
+    </div>
+    <div class="inputBox">
+        <input
+        type="text"
+        class="final mid"
+        placeholder="Fin"
+        aria-label="Fin"
+        [value]="horaFinal + ' : ' + minutoFinal"
+        />
+        <span>Final</span>
+    </div>
+    <div class="inputBox">
+        <input
+        type="text"
+        class="total last"
+        placeholder="Total"
+        aria-label="Total"
+        [value]="actividad.tiempoAcumulado.hora + ' : ' + actividad.tiempoAcumulado.minuto + ' : ' + actividad.tiempoAcumulado.segundo"
+        />
+        <span>Total</span>
+    </div>
+</div>
+
+
+<div class="secSeparador">
+    <div class="linea"></div>
+    <div class="separadorLabel">Descripción</div>
+  </div>
+
+<div class="input-group">
+    <textarea
+        class="form-control"
+        aria-label="With textarea"
+        placeholder="Añadir descripción detallada"
+        disabled="true"
+    ></textarea>
+</div>
+
+
+<div class="secSeparador">
+    <div class="linea"></div>
+    <div class="separadorLabel">Check List</div>
+  </div>
+
+<div *ngIf=" actividad.lista.length != 0" class="listWrapp">
+    <div *ngFor="let dato of actividad.lista; let i = index" class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        [value]="dato.estatus"
+        [id]="'lista' + i"
+        [checked]="dato.estatus"
+        disabled="true"
+      />
+      <label class="form-check-label" [for]="'lista' + i">
+        {{ dato.contenido }}
+      </label>
+    </div>
+</div>
+
+
+
+<div class="footer">
+    
+    <div class="prioridadBx">
+        <input
+            style="margin: 0;"
+            class="form-check-input"
+            type="checkbox"
+            id="prioridad"
+        />
+        <label class="form-check-label ms-2" for="prioridad">Prioridad Alta</label>
+    </div>
+    <button type="button" class="btn btn-outline-danger">Cancelar</button>
+    <button type="button" class="btn btn-outline-success">Guardar</button>
+</div>
