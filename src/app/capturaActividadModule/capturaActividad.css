@@ -1,5 +1,6 @@
 .capturarActividad {
     min-width: 600px;
+margin: 1em;
   }
 
 
@@ -7,7 +8,7 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid #e2e7ee;
-  padding-bottom: 0.5em;
+  padding-bottom: 16px  ;
   margin-bottom: 1em;
 }
 
@@ -27,15 +28,35 @@
 .header .dos {
   display: flex;
   align-items: center;
-  width: 15%;
+  width: 20%;
   justify-content: space-around;
 }
 
 .header .dos .botonCirc {
-  height: 1.2em;
-  width: 1.2em;
+  height: 2em;
+  width: 2em;
   background-color: #e2e7ee;
+  display: flex;
   border-radius: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color .3s;
+}
+
+.header .dos .botonCirc:hover{
+  background-color: #CECC00;
+}
+
+.header .dos .botonCirc:hover .mat-icon{
+  color: #fff;
+}
+
+.header .dos .mat-icon {
+  font-size: 17px;
+  width: 17px;
+  height: 17px;
+  color: #6E7E98;
 }
 
 .secSeparador {
@@ -125,7 +146,7 @@
   
 .footer {
   border-top: 2px solid #e2e7ee;
-  padding-top: 1em;
+  padding-top: 16px;
   margin-top: 1em;
   display: flex;
   justify-content: space-around;
@@ -134,4 +155,50 @@
 .prioridadBx{
   display: flex;
   align-items: center;
+}
+
+.controlTiempo{
+
+}
+
+.full-width{
+  width: 100%;
+}
+
+.checkList-2{
+  margin-left: 1em;
+}
+
+.checkList-1{
+  width: 100%;
+}
+
+.card-title{
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.prioridad{
+  display: flex;
+  align-items: center;
+  margin-left: 1em;
+  color: #6E7E98;
+}
+
+.prioridad .mat-icon{
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+.prioridad .label{
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.agregarCheckWrapp{
+  display: flex;
+  justify-content: end;
+  padding: 1em 16px 0 16px;
 }

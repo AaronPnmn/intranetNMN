@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { EstadoCapturaComponent } from './estado-captura/estado-captura.component';
 import { EstadoEdicionComponent } from './estado-edicion/estado-edicion.component';
 import { EstadoDuplicarComponent } from './estado-duplicar/estado-duplicar.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { EstadoDuplicarComponent } from './estado-duplicar/estado-duplicar.compo
     ],
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        MaterialModule
     ],
     providers:[
         

@@ -30,38 +30,26 @@
     <div class="separadorLabel">Registro de tiempo</div>
 </div>
 
-<div class="inputWrapper mb-3 controlTiempo">
-    <div class="inputBox">
-        <input
-        type="text"
-        class="inicio first"
-        placeholder="Inicio"
-        aria-label="Inicio"
-        [value]="horaInicial + ' : ' + minutoInicial"
-        />
-        <span>Inicio</span>
-    </div>
-    <div class="inputBox">
-        <input
-        type="text"
-        class="final mid"
-        placeholder="Fin"
-        aria-label="Fin"
-        [value]="horaFinal + ' : ' + minutoFinal"
-        />
-        <span>Final</span>
-    </div>
-    <div class="inputBox">
-        <input
-        type="text"
-        class="total last"
-        placeholder="Total"
-        aria-label="Total"
-        [value]="actividad.tiempoAcumulado.hora + ' : ' + actividad.tiempoAcumulado.minuto + ' : ' + actividad.tiempoAcumulado.segundo"
-        />
-        <span>Total</span>
-    </div>
-</div>
+<table class="full-width" cellspacing="1"><tr>
+    <td><mat-form-field >
+      <mat-label>Inicio</mat-label>
+      <input matInput
+      type="text"
+      [value]="horaInicial + ':' + minutoInicial + ' hrs'">
+    </mat-form-field></td>
+    <td><mat-form-field >
+      <mat-label>Fin</mat-label>
+      <input matInput
+      type="text"
+      [value]="horaFinal + ':' + minutoFinal + ' hrs'">
+    </mat-form-field></td>
+    <td><mat-form-field>
+      <mat-label>Total</mat-label>
+      <input matInput
+      type="text"
+      [value]="actividad.tiempoAcumulado.hora + ' : ' + actividad.tiempoAcumulado.minuto + ' : ' + actividad.tiempoAcumulado.segundo">
+    </mat-form-field></td>
+  </tr></table>
 
 
 <div class="secSeparador">

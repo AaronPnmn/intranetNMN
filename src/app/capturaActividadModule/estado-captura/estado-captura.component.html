@@ -16,38 +16,28 @@
     <div class="separadorLabel">Registro de tiempo</div>
 </div>
 
-<div class="inputWrapper mb-3 controlTiempo">
-    <div class="inputBox">
-        <input
-        type="text"
-        class="inicio first"
-        placeholder="Inicio"
-        aria-label="Inicio"
-        [value]="acumuladorInicial.hora + ':' + acumuladorInicial.minuto + ' hrs'"
-        />
-        <span>Inicio</span>
-    </div>
-    <div class="inputBox">
-        <input
-        type="text"
-        class="final mid"
-        placeholder="Fin"
-        aria-label="Fin"
-        [value]="acumuladorFinal.hora + ':' + acumuladorFinal.minuto + ' hrs'"
-        />
-        <span>Final</span>
-    </div>
-    <div class="inputBox">
-        <input
-        type="text"
-        class="total last"
-        placeholder="Total"
-        aria-label="Total"
-        [value]="actividad.tiempoAcumulado.hora + ' : ' + actividad.tiempoAcumulado.minuto + ' : ' + actividad.tiempoAcumulado.segundo"
-        />
-        <span>Total</span>
-    </div>
-</div>
+
+
+<table class="full-width" cellspacing="1"><tr>
+    <td><mat-form-field >
+      <mat-label>Inicio</mat-label>
+      <input matInput
+      type="text"
+      [value]="acumuladorInicial.hora + ':' + acumuladorInicial.minuto + ' hrs'">
+    </mat-form-field></td>
+    <td><mat-form-field >
+      <mat-label>Fin</mat-label>
+      <input matInput
+      type="text"
+      [value]="acumuladorFinal.hora + ':' + acumuladorFinal.minuto + ' hrs'">
+    </mat-form-field></td>
+    <td><mat-form-field>
+      <mat-label>Total</mat-label>
+      <input matInput
+      type="text"
+      [value]="actividad.tiempoAcumulado.hora + ' : ' + actividad.tiempoAcumulado.minuto + ' : ' + actividad.tiempoAcumulado.segundo">
+    </mat-form-field></td>
+  </tr></table>
 
 <!-- ------------ separador ------------ -->
 
@@ -57,11 +47,11 @@
   </div>
 
 <div class="input-group">
-    <textarea
-        class="form-control"
-        aria-label="With textarea"
-        placeholder="Añadir descripción detallada"
-    ></textarea>
+
+    <mat-form-field class="full-width">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput placeholder="Añadir descripción detallada"></textarea>
+      </mat-form-field>
 </div>
 
 <!-- ------------ separador ------------ -->
@@ -69,40 +59,42 @@
 <div class="secSeparador">
     <div class="linea"></div>
     <div class="separadorLabel">Check List</div>
-  </div>
-
-<div *ngIf=" actividad.lista.length != 0" class="listWrapp">
-    <div *ngFor="let dato of actividad.lista; let i = index" class="form-check">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        [value]="dato.estatus"
-        [id]="'lista' + i"
-        [checked]="dato.estatus"
-      />
-      <label class="form-check-label" [for]="'lista' + i">
-        {{ dato.contenido }}
-      </label>
-    </div>
 </div>
 
-<form class="input-group mt-3" (ngSubmit)="agregarCheckList()">
+
+
+<div *ngIf=" actividad.lista.length != 0" class="listWrapp">
+
+    <mat-selection-list>
+      <mat-list-option *ngFor="let dato of actividad.lista; let i = index" class="form-check" [value]="dato.estatus" [selected]="dato.estatus">
+        {{ dato.contenido }}
+      </mat-list-option>
+    </mat-selection-list>
+
+</div>
+
+
+<form class="agregarCheckWrapp" (ngSubmit)="agregarCheckList()">
+  <mat-form-field class="checkList-1">
+    <mat-label>Agregar Elemento</mat-label>
     <input 
-        type="text" 
-        class="form-control" 
-        placeholder="Escribe algo"
-        name="contenido"
-        [(ngModel)]="nuevo.contenido"
+      matInput 
+      [(ngModel)]="nuevo.contenido"
+      name="contenido"
     >
-    <div class="input-group-append">
-      <button class="btn btn-secondary agregarCheck" type="submit">Agregar elemento</button>
-    </div>
+  </mat-form-field>
+  
+  <div class="checkList-2">
+    <button mat-icon-button mat-mini-fab type="submit">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  
 </form>
 
 
-
 <div class="footer">
-    <button type="button" class="btn btn-outline-danger">Eliminar Actividad</button>
-    <button (click)="startCrono()" type="button" class="btn btn-outline-secondary">{{ buttonLabel }}</button>
-    <button type="button" class="btn btn-outline-success">Guardar</button>
+  <button mat-raised-button color="warn">Eliminar Actividad</button>
+  <button (click)="startCrono()" mat-raised-button color="accent">{{ buttonLabel }}</button>
+  <button mat-raised-button color="primary">Guardar</button>
 </div>
