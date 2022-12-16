@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { registroActividad } from '../Interfaces/capturaActividad.interface';
+import { registroActividad } from '../../Interfaces/capturaActividad.interface';
 
 
 
 @Component({
   selector: 'app-capturarActividad',
   templateUrl: `capturaActividad.component.html`,
-  styleUrls: ['../capturaActividad.css']
+  styleUrls: ['../../capturaActividad.css']
 })
 export class CapturaActividadComponent {
 

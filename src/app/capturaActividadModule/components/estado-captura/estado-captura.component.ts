@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { acumuladorTiempoNumber, acumuladorTiempoString, elementoLista, registroActividad } from '../Interfaces/capturaActividad.interface';
+import { acumuladorTiempoNumber, acumuladorTiempoString, elementoLista, registroActividad } from '../../Interfaces/capturaActividad.interface';
 
 
 @Component({
   selector: 'app-estado-captura',
   templateUrl: './estado-captura.component.html',
-  styleUrls: ['../capturaActividad.css']
+  styleUrls: ['../../capturaActividad.css']
 })
 export class EstadoCapturaComponent{
 

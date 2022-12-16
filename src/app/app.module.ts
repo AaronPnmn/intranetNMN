@@ -5,17 +5,21 @@ import { AppComponent } from './app.component';
 
 import { CapturaActividadModule } from './capturaActividadModule/CapturaAct.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
     CapturaActividadModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

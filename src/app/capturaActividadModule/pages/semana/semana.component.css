@@ -1,0 +1,16 @@
+.weekSelector{
+    display: flex;
+    align-items: center;
+    
+    padding: 2em 1em;
+
+    margin-bottom: 2em;
+}
+
+
+
+.weekSelector .semana{
+    margin: 0 1em;
+    font-size: 18px;
+    font-weight: 500;
+}

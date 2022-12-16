@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { registroActividad } from '../Interfaces/capturaActividad.interface';
+import { registroActividad } from '../../Interfaces/capturaActividad.interface';
 
 @Component({
   selector: 'app-estado-duplicar',
   templateUrl: './estado-duplicar.component.html',
-  styleUrls: ['../capturaActividad.css']
+  styleUrls: ['../../capturaActividad.css']
 })
 export class EstadoDuplicarComponent {
   

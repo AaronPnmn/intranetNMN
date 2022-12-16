@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { elementoLista, registroActividad } from '../Interfaces/capturaActividad.interface';
+import { elementoLista, registroActividad } from '../../Interfaces/capturaActividad.interface';
 
 @Component({
   selector: 'app-estado-edicion',
   templateUrl: './estado-edicion.component.html',
-  styleUrls: ['../capturaActividad.css']
+  styleUrls: ['../../capturaActividad.css']
 })
 export class EstadoEdicionComponent implements OnInit {
 

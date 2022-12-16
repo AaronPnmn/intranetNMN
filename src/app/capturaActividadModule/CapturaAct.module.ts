@@ -1,12 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { CapturaActividadComponent } from './capturaActividadApp/capturaActividad.component';
+import { CapturaActividadComponent } from './components/capturaActividadApp/capturaActividad.component';
 import { FormsModule } from '@angular/forms';
-import { EstadoCapturaComponent } from './estado-captura/estado-captura.component';
-import { EstadoEdicionComponent } from './estado-edicion/estado-edicion.component';
-import { EstadoDuplicarComponent } from './estado-duplicar/estado-duplicar.component';
+import { EstadoCapturaComponent } from './components/estado-captura/estado-captura.component';
+import { EstadoEdicionComponent } from './components/estado-edicion/estado-edicion.component';
+import { EstadoDuplicarComponent } from './components/estado-duplicar/estado-duplicar.component';
 import { MaterialModule } from '../material/material.module';
+import { SemanaComponent } from './pages/semana/semana.component';
+import { MesComponent } from './pages/mes/mes.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ActividadesRoutingModule } from './actividades-routing.module';
+import { ColaboradorSemanaComponent } from './components/colaborador-semana/colaborador-semana.component';
+import { DiaSemanaComponent } from './components/dia-semana/dia-semana.component';
+import { TarjetaActividadComponent } from './components/tarjeta-actividad/tarjeta-actividad.component';
 
 
 @NgModule({
@@ -14,7 +21,13 @@ import { MaterialModule } from '../material/material.module';
         CapturaActividadComponent,
         EstadoCapturaComponent,
         EstadoEdicionComponent,
-        EstadoDuplicarComponent
+        EstadoDuplicarComponent,
+        SemanaComponent,
+        MesComponent,
+        HomeComponent,
+        ColaboradorSemanaComponent,
+        DiaSemanaComponent,
+        TarjetaActividadComponent
     ],
     exports: [
         CapturaActividadComponent,
@@ -22,7 +35,8 @@ import { MaterialModule } from '../material/material.module';
     imports: [
         CommonModule,
         FormsModule,
-        MaterialModule
+        MaterialModule,
+        ActividadesRoutingModule
     ],
     providers:[
         
