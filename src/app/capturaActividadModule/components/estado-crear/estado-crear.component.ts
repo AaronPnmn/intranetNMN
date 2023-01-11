@@ -75,24 +75,42 @@ export class EstadoCrearComponent implements OnInit {
     estatus: false
   }
 
-  nuevaActividad:FormGroup = this.fb.group({
+  nuevaActividadFormulario:FormGroup = this.fb.group({
 
-    nombre: ['',[ Validators.required ]], //desde formulario ✅ 
-    descripcion: [''],  //desde formulario ✅ puede ir vacio
-    prioridadAlta: [false,[ Validators.required ]], //desde formulario ✅
-    autor: this.autor, //se recupera el nombre del usuario ✅
-    colaboradorAsignado: ['',[ Validators.required ]], //se recupera el nombre del colaborador ❌ || se puede cambiar en formulario SI ES ADMINISTRADOR ✅
-    cliente: ['',[ Validators.required ]],  //desde formulario ✅
-    proyecto: ['',[ Validators.required ]], //desde formulario ✅
-    semana: [''],//semana
-    mes: [''],//mes
-    anio: [''],//anio
-    tiempoInicio: [''], //si esta vacio se manda en 0 ✅ || si NO esta vacio se recupera del formulario ✅ se procesa y se convierte en timeStamp ❌
-    tiempoFinal: [''],  //si esta vacio se manda en 0 ✅ || si NO esta vacio se recupera del formulario ✅ se procesa y se convierte en timeStamp ❌
-    fecha: ['',[ Validators.required ]],  //se inicia con la fecha del dia seleccionado ❌ || se puede cambiar en formulario ❌
-    lista: this.actividad.lista, //se recupera la checkList del componente ✅
+    nombre: ['',[ Validators.required ]], 
+    descripcion: [''],  
+    prioridadAlta: [false,[ Validators.required ]], 
+    //autor: this.autor, //se recupera el nombre del usuario ✅
+    colaboradorAsignado: ['',[ Validators.required ]], 
+    cliente: ['',[ Validators.required ]],  
+    proyecto: ['',[ Validators.required ]], 
+    //semana: [''],//semana
+    //mes: [''],//mes
+    //anio: [''],//anio
+    tiempoInicio: [''], 
+    tiempoFinal: [''],  
+    fecha: ['',[ Validators.required ]],  
     
   });
+
+  nuevaActividad_envio:any = {
+
+    nombre: '', //desde formulario ✅ 
+    descripcion: '',  //desde formulario ✅ puede ir vacio
+    prioridadAlta: false, //desde formulario ✅
+    autor: '', //se recupera el nombre del usuario ✅
+    colaborador: '', //se recupera el nombre del colaborador ❌ || se puede cambiar en formulario SI ES ADMINISTRADOR ✅
+    cliente: '',  //desde formulario ✅
+    proyecto: '', //desde formulario ✅
+    semana: 0,//semana ✅
+    mes: 0,//mes ✅
+    anio: 0,//anio ✅
+    tiempoInicio: 0, //si esta vacio se manda en 0 ✅ || si NO esta vacio se recupera del formulario ✅ se procesa y se convierte en timeStamp ❌
+    tiempoFinal: 0,  //si esta vacio se manda en 0 ✅ || si NO esta vacio se recupera del formulario ✅ se procesa y se convierte en timeStamp ❌
+    fecha: 0,  //se inicia con la fecha del dia seleccionado ✅ || se puede cambiar en formulario ✅
+    lista: [] //se recupera la checkList del componente ✅
+    
+  };
 
 
   constructor( private capturaService:CapturaActividadService,
@@ -118,11 +136,11 @@ export class EstadoCrearComponent implements OnInit {
     }
     );
     
-    this.nuevaActividad.value.nombre = this.actividad.fecha
-    console.log("oninit estadocrear" ,this.nuevaActividad.value.nombre );
+    this.nuevaActividadFormulario.value.nombre = this.actividad.fecha
+    console.log("oninit estadocrear" ,this.nuevaActividadFormulario.value.nombre );
     
     let fecha = new Date(this.actividad.fecha)
-    this.nuevaActividad.patchValue({
+    this.nuevaActividadFormulario.patchValue({
       fecha: fecha
     })
   }
@@ -130,9 +148,10 @@ export class EstadoCrearComponent implements OnInit {
   horaMinutoToDate( horaMinuto: string, fecha:any ){
     let tiempoArr:any[] = horaMinuto.split(":")
     let fechaArr:any[] = fecha.split("/")
-
-
-    let resultado = new Date(fechaArr[2], fechaArr[1] - 1 , fechaArr[0] ,tiempoArr[0],tiempoArr[1],tiempoArr[2])
+    
+    //                       |   año    |        mes      |    dia      |   hora     |  minuto    |  segundo  | 
+    let resultado = new Date(fechaArr[0], fechaArr[1] - 1 , fechaArr[2] ,tiempoArr[0],tiempoArr[1],tiempoArr[2]).getTime()
+    
     return resultado
 
   }
@@ -141,37 +160,47 @@ export class EstadoCrearComponent implements OnInit {
 
   crearNuevaActividad(){
 
+    const fechaSimple = this.pipe.transform(this.nuevaActividadFormulario.value.fecha, 'yyyy/MM/dd')
+    const fechaTimeStamp:Date = this.nuevaActividadFormulario.value.fecha.getTime()
+    const anio = this.nuevaActividadFormulario.value.fecha.getFullYear()
+    const mes = this.nuevaActividadFormulario.value.fecha.getMonth() + 1
+    const semana = parseInt(this.pipe.transform(this.nuevaActividadFormulario.value.fecha, 'w')!);
     
-    
-    let fechaSimple = this.pipe.transform(this.nuevaActividad.value.fecha, 'yyyy/MM/dd')
-
-    
-    
-
-    
-    
-    if (this.nuevaActividad.value.tiempoInicio === '') { //si esta vacio se manda en 0 ✅
-      this.nuevaActividad.value.tiempoInicio = 0;
-    }else{
-      let prueba = this.horaMinutoToDate(  this.nuevaActividad.value.tiempoInicio , fechaSimple  )
-      console.log(prueba);  
-      
+    if (this.nuevaActividadFormulario.value.tiempoInicio === '') { //si esta vacio se manda en 0 ✅
+      this.nuevaActividad_envio.tiempoInicio = 0;
+    }else{ //si tiene datos se convierte en timeStamp ✅
+      const tiempoInicioTimeStamp = this.horaMinutoToDate(  this.nuevaActividadFormulario.value.tiempoInicio , fechaSimple  )
+      this.nuevaActividad_envio.tiempoInicio = tiempoInicioTimeStamp;
     }
 
-    if (this.nuevaActividad.value.tiempoFinal === '') { //si esta vacio se manda en 0 ✅
-      this.nuevaActividad.value.tiempoFinal = 0;
+    if (this.nuevaActividadFormulario.value.tiempoFinal === '') { //si esta vacio se manda en 0 ✅
+      this.nuevaActividad_envio.tiempoFinal = 0;
+    }else{ //si tiene datos se convierte en timeStamp ✅
+      const tiempoFinalTimeStamp = this.horaMinutoToDate(  this.nuevaActividadFormulario.value.tiempoFinal , fechaSimple  )
+      this.nuevaActividad_envio.tiempoFinal = tiempoFinalTimeStamp;
     }
+    
+    this.nuevaActividad_envio.nombre        = this.nuevaActividadFormulario.value.nombre;
+    this.nuevaActividad_envio.descripcion   = this.nuevaActividadFormulario.value.descripcion;
+    this.nuevaActividad_envio.prioridadAlta = this.nuevaActividadFormulario.value.prioridadAlta;
+    this.nuevaActividad_envio.autor         = this.authService.usuario.uid;
+    this.nuevaActividad_envio.colaborador   = this.nuevaActividadFormulario.value.colaboradorAsignado;
+    this.nuevaActividad_envio.cliente       = this.nuevaActividadFormulario.value.cliente;
+    this.nuevaActividad_envio.proyecto      = this.nuevaActividadFormulario.value.proyecto;
+    this.nuevaActividad_envio.semana        = semana;
+    this.nuevaActividad_envio.mes           = mes;
+    this.nuevaActividad_envio.anio          = anio;
+ // this.nuevaActividad_envio.tiempoInicio  = Se procesa en el condicional y se transforma en TimeStamp ✅
+ // this.nuevaActividad_envio.tiempoFinal   = Se procesa en el condicional y se transforma en TimeStamp ✅
+    this.nuevaActividad_envio.fecha         = fechaTimeStamp
+    this.nuevaActividad_envio.lista         = this.actividad.lista
+    
+    console.log('Nueva actividad a enviar:',this.nuevaActividad_envio);
 
-    
-    this.nuevaActividad.value.autor = this.authService.usuario.name //se recupera el nombre del usuario ✅
-    this.nuevaActividad.value.lista = this.actividad.lista //se recupera la checkList del componente ✅
-    console.log(this.nuevaActividad.value);
-    
-
-    
-    
-    
-    //return this.http.post<any>( url, body ).subscribe(ok => {console.log(ok);})
+    this.capturaService.postNuevaActvidad(this.nuevaActividad_envio)
+        .subscribe( resp => {
+          console.log(resp);
+        });
     
   }
 

@@ -1,6 +1,6 @@
 import { HttpBackend, HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, map, tap } from "rxjs";
 import { acumuladorTiempo, acumuladorTiempoNumber, acumuladorTiempoString, registroActividad } from "../Interfaces/capturaActividad.interface";
 
 
@@ -85,17 +85,24 @@ export class CapturaActividadService {
   // getActividades(){
   //   return this.http.get('http://localhost:3000/actividades') 
   // }
-
+  postNuevaActvidad( actividad:any ){
+    const url = `https://nmn.com.mx/api/actividades`;
+    const body = actividad;
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.post<any>( url, body ,{ headers })
+  }
   getActividadesSemana(){
-    const url = `https://nmn.com.mx/api/actividades/semana/63a4e9b42c06ee812f3fe2a2/2023/5`;
+    const url = `https://nmn.com.mx/api/actividades/semana/63a4d7e40a0301ffe0c9090c/2023/2`;
     console.log("token:" +localStorage.getItem('token'));
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     })
-    // const headers = new HttpHeaders()
-    //   .set('x-token', localStorage.getItem('token') || '' );
     return this.http.get( url, { headers } );
   }
 
