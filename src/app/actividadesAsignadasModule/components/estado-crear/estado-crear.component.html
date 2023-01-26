@@ -1,0 +1,165 @@
+<form autocomplete="off"
+      (ngSubmit)="crearNuevaActividad()">
+  <div class="secSeparador">
+    <div class="linea"></div>
+    <div class="separadorLabel">Información</div>
+  </div>
+  <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Titulo de actividad</mat-label>
+      <input matInput
+             required
+             [(ngModel)]="nuevaActividad_envio.nombre"
+             name="nombre">
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Fecha {{actividad.fecha | date:'long'}}</mat-label>
+    <input matInput 
+      required
+      [matDatepicker]="picker" 
+      [(ngModel)]="actividad.fecha" name="fecha">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+
+  <table class="full-width" cellspacing="1">
+    <tr>
+      <td *ngIf="rol === 'admin'">  
+        <mat-form-field appearance="outline" class="edicionInput">
+          <mat-label>Colaborador</mat-label>
+          <select matNativeControl 
+                  required
+                  [(ngModel)]="nuevaActividad_envio.colaborador"
+                  name="nombreColaborador">
+            <option *ngFor="let colaborador of colaboradores;" [value]="colaborador.id">{{colaborador.nombre}}</option>
+          </select>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="outline" class="edicionInput">
+          <mat-label>Cliente</mat-label>
+          <select matNativeControl 
+                  required
+                  (change)="cambiaCliente($event)"
+                  [(ngModel)]="nuevaActividad_envio.cliente" 
+                  name="cliente">
+            <option [selected]="cliente.id === actividad.cliente[0].id" *ngFor="let cliente of clientes; let i = index" [value]="cliente.id">{{cliente.razon_social}}</option>
+          </select>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="outline" class="edicionInput">
+          <mat-label>Proyecto</mat-label>
+          <select matNativeControl
+                  required
+                  [(ngModel)]="nuevaActividad_envio.proyecto"
+                  name="proyecto">
+            <option *ngFor="let proyecto of proyectos; let i = index" [value]="proyecto.id">{{proyecto.nombre}}</option>
+          </select>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Descripción</mat-label>
+    <textarea matInput
+              [(ngModel)]="nuevaActividad_envio.descripcion"
+              name="descripcion"></textarea>
+  </mat-form-field>
+
+  <div class="secSeparador">
+      <div class="linea"></div>
+      <div class="separadorLabel">Registro de tiempo</div>
+  </div>
+
+  <table class="full-width" cellspacing="1">
+    <tr>
+      <td>
+        <mat-form-field appearance="outline" class="edicionInput">
+          <mat-label>Inicio</mat-label>
+          <input matInput
+          type="time"
+          [(ngModel)]="nuevaActividad_envio.tiempoInicio"
+          (change)="restaTiempos()"
+          name="tiempoInicio">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="outline" class="edicionInput">
+          <mat-label>Fin</mat-label>
+          <input matInput
+          type="time"
+          [(ngModel)]="nuevaActividad_envio.tiempoFinal"
+          (change)="restaTiempos()"
+          name="tiempoFinal">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="outline" class="edicionInput">
+          <mat-label>Total</mat-label>
+          <input matInput
+          type="text"
+          [value]="tiempoAcumulado.resHor + ':' + tiempoAcumulado.resMin + ':' + tiempoAcumulado.resSeg"
+          name="tiempoAcumulado">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+
+
+  <div class="secSeparador">
+    <div class="linea"></div>
+    <div class="separadorLabel">Check List</div>
+  </div>
+
+  <div *ngIf=" actividad.lista.length != 0" class="listWrapp">
+
+  <mat-selection-list>
+    <mat-list-option 
+      *ngFor="let dato of actividad.lista; let i = index" 
+      class="form-check" 
+      [value]="dato.estatus" [selected]="dato.estatus">
+      {{ dato.contenido }}
+    </mat-list-option>
+  </mat-selection-list>
+
+  </div>
+
+  <form class="agregarCheckWrapp" (ngSubmit)="agregarCheckList()">
+    <mat-form-field class="checkList-1" appearance="standard">
+      <mat-label>Agregar Elemento</mat-label>
+      <input 
+        matInput 
+        [(ngModel)]="nuevo.contenido"
+        name="contenido">
+    </mat-form-field>
+
+    <div class="checkList-2">
+      <button mat-icon-button mat-mini-fab type="submit">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </form>
+
+  <div class="footer">
+    <mat-checkbox class="example-margin" [(ngModel)]="nuevaActividad_envio.prioridadAlta" name="prioridadAlta">Prioridad alta</mat-checkbox>
+    <button mat-raised-button color="warn" type="button" (click)="cancelarActividad()">Cancelar</button>
+    <button mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="
+              nuevaActividad_envio.nombre === '' ||
+              nuevaActividad_envio.colaborador === '' ||
+              nuevaActividad_envio.cliente === '' ||
+              nuevaActividad_envio.proyecto === '' " >Guardar</button>
+  </div>
+</form>
+
+
+
+
+

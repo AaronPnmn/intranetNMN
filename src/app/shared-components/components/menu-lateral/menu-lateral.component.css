@@ -1,0 +1,52 @@
+.nNumen{
+    display: flex;
+    margin-right: 0.5em;
+}
+
+.menuHeader{
+    font-size: 16px;
+    width: 18em;
+    justify-content: center;
+    background-color: white;
+    border-bottom: 2px solid #D5D5D5;
+}
+
+.mat-list-base{
+    padding-top: 30px;
+}
+
+.menuIcon{
+    margin-right: 10px;
+}
+
+.menuOpt{
+    color: #6E7E98;
+}
+
+.menuOpt.active .menuIcon{
+    color: #CECC00;
+}
+
+.menuOpt.active{
+    color: black;
+    border-right: 6px solid #CECC00;
+}
+
+.menuBody{
+    height: calc(100% - 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menuFooter{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4em;
+}
+
+.menuFooter .nmnLogo{
+    width: 50%;
+    
+}

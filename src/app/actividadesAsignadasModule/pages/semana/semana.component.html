@@ -1,0 +1,52 @@
+
+
+<div class="semanaHeader">
+    <div class="weekSelectorWrapper">
+        <div class="weekSelector">
+            <button mat-mini-fab (click)="retrocederSemana()">
+                <mat-icon>arrow_back_ios_new</mat-icon>
+            </button>
+    
+            <div class="semanaContainer">
+                <div class="semana">Semana {{fechaSeleccionada | date:'w' }}</div>
+                <div class="periodo">{{diasEnSemana[0] | date:'dd MMM' }}  -  {{diasEnSemana[6] | date:'dd MMM' }}</div>
+            </div>
+    
+            
+            <button mat-mini-fab (click)="avanzarSemana()">
+                <mat-icon>arrow_forward_ios</mat-icon>
+            </button>
+        </div>
+        <button *ngIf="fechaAlterada === true" mat-icon-button (click)="regresarSemanaActual()">
+            <mat-icon>
+                history
+            </mat-icon>
+        </button>
+    </div>
+
+    <mat-form-field appearance="outline" class="colaboradorSelect" *ngIf="rol === 'admin'">
+        <mat-label>Colaborador</mat-label>
+        <select matNativeControl 
+                (change)="cambiarColaborador()" 
+                [(ngModel)]="id_colaboradorSeleccionado" 
+                name="s">
+          <option *ngFor="let colaborador of _colaboradores; let i = index" [value]="colaborador.id">
+            {{colaborador.nombre}}
+          </option>
+        </select>
+      </mat-form-field> 
+
+
+</div>
+
+<div class="colaboradorWrapper">
+
+    <app-dia-semana 
+        *appRecarga="reloadSemana"
+        [diasEnSemana]='diasEnSemana'
+        [diaActual]='diaActual'
+        [fechaSeleccionada]='fechaSeleccionada'
+        [colaboradorSeleccionado]='id_colaboradorSeleccionado'
+    ></app-dia-semana>
+
+</div>

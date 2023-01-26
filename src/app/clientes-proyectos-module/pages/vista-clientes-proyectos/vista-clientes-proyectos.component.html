@@ -1,0 +1,58 @@
+<!-- Primer Sidenav -->
+
+<mat-sidenav-container fullscreen> 
+
+
+
+    <mat-sidenav-content >
+        <!-- Segundo Sidenav -->
+        <mat-sidenav-container fullscreen>
+            
+            <!-- Drawer Menu -->
+            <mat-sidenav mode="over" #menuDrawer> 
+                <app-menu-lateral [pagina]="'clientes'"></app-menu-lateral>
+            </mat-sidenav>
+            <!-- Drawer Menu -->
+            
+
+            <mat-sidenav-content class="bg-princ" >
+                <mat-toolbar class="userToolbar bg-white">
+                    <button mat-icon-button
+                            color="primary"
+                            (click)="menuDrawer.toggle()">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                    <div class="userButton">
+                        <mat-icon style="font-size: 30px; width: 30px; height: 30px;">account_circle</mat-icon>
+                        <span>user.name</span>
+                    </div>
+                </mat-toolbar>
+
+
+                <div class="main-container">
+
+                    <!-- Vista Actividades Asignadas -->
+                    <div class="actHeader">
+                        <div class="titHeader">Clientes</div>
+
+                    </div>
+                    
+                    <!-- Vista Actividades Asignadas -->
+
+                </div>
+                
+            </mat-sidenav-content>
+
+        </mat-sidenav-container>
+        <!-- Segundo Sidenav -->
+    </mat-sidenav-content>
+
+    <!-- Drawer Captura -->
+    <mat-sidenav #drawer mode="over"  position="end">
+        
+    </mat-sidenav>
+    <!-- Drawer Captura -->
+
+</mat-sidenav-container>
+
+<!-- Primer Sidenav -->
