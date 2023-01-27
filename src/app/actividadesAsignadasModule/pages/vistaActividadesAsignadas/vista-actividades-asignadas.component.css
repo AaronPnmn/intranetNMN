@@ -16,6 +16,7 @@
 
 .actHeader .acumuladosWrapp{
     display: flex;
+    text-align: center;
 }
 
 .actHeader .acumuladosWrapp .acumulado{
@@ -24,9 +25,7 @@
     border-radius: 8px;
 }
 
-.actHeader .acumuladosWrapp .acumulado:first-child{
-    margin-right: 1em;
-}
+
 
 .actHeader .acumuladosWrapp .acumulado .tit1{
     font-size: 15px;

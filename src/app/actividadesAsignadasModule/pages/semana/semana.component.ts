@@ -26,7 +26,9 @@ export class SemanaComponent implements OnInit {
 
   selected: any;
 
-  refresh:boolean = false;
+  refresh: boolean = false;
+
+  acumuladoSemanal: string = '';
 
 
   public _colaboradores: any[] = [];
@@ -134,5 +136,9 @@ export class SemanaComponent implements OnInit {
 
     this.diasEnSemana = this.diasSemana( this.fechaSeleccionada )
 
+  }
+
+  procesaPropagar(mensaje:any) {
+    this.acumuladoSemanal = mensaje
   }
 }

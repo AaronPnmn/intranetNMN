@@ -5,12 +5,14 @@ import {  VistaActividadesAsignadasComponent } from './actividadesAsignadasModul
 
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { VistaClientesProyectosComponent } from './clientes-proyectos-module/pages/vista-clientes-proyectos/vista-clientes-proyectos.component';
+import { LoginComponent } from './auth/pages/login/login.component';
 
 
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule )
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule ),
+    component: LoginComponent, 
   },
   {
     path: 'actividades',

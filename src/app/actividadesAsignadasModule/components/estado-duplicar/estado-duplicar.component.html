@@ -19,7 +19,7 @@
     <input class="form-control" type="date" />
 </div> -->
 
-<form (ngSubmit)="duplicarActividad()">
+<form (ngSubmit)="duplicarActividad()"> 
     <mat-form-field class="full-width">
         <mat-label>Choose a date</mat-label>
         <input matInput 
@@ -30,6 +30,53 @@
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+
+      <div class="secSeparador">
+        <div class="linea"></div>
+        <div class="separadorLabel">Check List</div>
+      </div>
+    
+      <div *ngIf=" actividad.lista.length != 0" class="listWrapp">
+    
+      <!-- <mat-selection-list>
+        <mat-list-option 
+          *ngFor="let dato of actividad.lista; let i = index" 
+          class="form-check" 
+          [value]="dato.estatus" [selected]="dato.estatus">
+          {{ dato.contenido }}
+        </mat-list-option>
+      </mat-selection-list> -->
+    
+      <mat-selection-list>
+    
+        <div class="optionCheckWrapp" *ngFor="let dato of actividad.lista; let i = index">
+          <mat-list-option class="form-check" [ngClass]="{'checked': dato.estatus}" [value]="dato.estatus" [selected]="dato.estatus" (click)="checkElemento(i)">
+            {{ dato.contenido }}
+          </mat-list-option>
+          <button mat-icon-button class="btnEliminarCheck" (click)="eliminarElemento(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+    
+      </mat-selection-list>
+    
+      </div>
+    
+      <form class="agregarCheckWrapp" (ngSubmit)="agregarCheckList()">
+        <mat-form-field class="checkList-1" appearance="standard">
+          <mat-label>Agregar Elemento</mat-label>
+          <input 
+            matInput 
+            [(ngModel)]="nuevo.contenido"
+            name="contenido">
+        </mat-form-field>
+    
+        <div class="checkList-2">
+          <button mat-icon-button mat-mini-fab type="submit" color="primary">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </form>
     
       <div class="footer">
         <button [disabled]="fechaCopia == null" mat-raised-button type="submit" color="primary">Duplicar Actividad</button>

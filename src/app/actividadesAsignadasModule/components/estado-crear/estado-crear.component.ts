@@ -349,4 +349,20 @@ export class EstadoCrearComponent implements OnInit {
 
     this.tiempoAcumulado = this.difTiempo(tiempoInicioTimeStamp, tiempoFinalTimeStamp) 
   }
+
+  checkElemento( index:number ): void{
+
+    this.actividad.lista[index].estatus = !this.actividad.lista[index].estatus
+
+    
+
+  }
+
+  eliminarElemento( index:number ): void{
+    console.log("elemento a eliminar:", this.actividad.lista[index].contenido);
+    this.actividad.lista[index].estatus
+    if (index > -1) { 
+    this.actividad.lista.splice(index, 1); 
+    }
+  }
 }

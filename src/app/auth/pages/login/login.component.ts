@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -16,11 +17,12 @@ export class LoginComponent  {
     
   });
 
-  errorLabel: string = '';
+  
 
   constructor( private fb:FormBuilder,
                private router: Router,
-               private authService: AuthService ) { }
+               private authService: AuthService,
+               private snackBar: MatSnackBar, ) { }
 
   login(){
 
@@ -35,8 +37,19 @@ export class LoginComponent  {
 
         if ( ok.ok === true ) {
           this.router.navigateByUrl('/actividades');
+          const snackBarRef = this.snackBar.dismiss()
         }else{
-          this.errorLabel = ok.error.error 
+          const message = ok.error.error;
+          const snackBarRef = this.snackBar.open(message, 'Ok', { verticalPosition: 'bottom', horizontalPosition: 'right' });
+          
+
+          if ( ok.error.error === "USER_NOT_EXISTS"){
+            this.miFormulario.patchValue({email: ''});
+          }
+          if ( ok.error.error === "PASSWORD_INVALID"){
+            this.miFormulario.patchValue({password: ''});
+          }
+          
         }
       });
     

@@ -216,7 +216,24 @@ margin: 1em;
   width: 95%;
 }
 
+.optionCheckWrapp{
+  display: flex;
+  align-items: center;
+}
 
+.btnEliminarCheck{
+  color: #afafaf;
+  transition: color .3s;
+}
+
+.btnEliminarCheck:hover{
+  color: #dc3545;
+}
+
+.checked{
+  text-decoration:line-through;
+  color: #a8a8a8 !important;  
+}
 
 
 

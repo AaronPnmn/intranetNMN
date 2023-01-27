@@ -24,6 +24,7 @@
       <input matInput
       type="time"
       [(ngModel)]="tiempoInicio"
+      (ngModelChange)="restaTiempos()"
       name="tiempoInicio"
       >
       
@@ -33,6 +34,7 @@
       <input matInput
       type="time"
       [(ngModel)]="tiempoFinal"
+      (ngModelChange)="restaTiempos()"
       name="tiempoFinal">
     </mat-form-field></td>
     <td><mat-form-field appearance="standard">
@@ -72,9 +74,16 @@
 <div *ngIf=" actividad.lista.length != 0" class="listWrapp">
 
     <mat-selection-list>
-      <mat-list-option *ngFor="let dato of actividad.lista; let i = index" class="form-check" [value]="dato.estatus" [selected]="dato.estatus">
-        {{ dato.contenido }}
-      </mat-list-option>
+
+      <div class="optionCheckWrapp" *ngFor="let dato of actividad.lista; let i = index">
+        <mat-list-option class="form-check" [ngClass]="{'checked': dato.estatus}" [value]="dato.estatus" [selected]="dato.estatus" (click)="checkElemento(i)">
+          {{ dato.contenido }}
+        </mat-list-option>
+        <button mat-icon-button class="btnEliminarCheck" (click)="eliminarElemento(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+ 
     </mat-selection-list>
 
 </div>

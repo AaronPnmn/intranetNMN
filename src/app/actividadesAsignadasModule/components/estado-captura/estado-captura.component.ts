@@ -288,7 +288,23 @@ export class EstadoCapturaComponent implements OnInit, OnChanges{
     this.actividad.lista.push( {...this.nuevo} );
     this.nuevo.contenido = '';
 
+    
+  }
 
+  checkElemento( index:number ): void{
+
+    this.actividad.lista[index].estatus = !this.actividad.lista[index].estatus
+
+    
+
+  }
+
+  eliminarElemento( index:number ): void{
+    console.log("elemento a eliminar:", this.actividad.lista[index].contenido);
+    this.actividad.lista[index].estatus
+    if (index > -1) { 
+    this.actividad.lista.splice(index, 1); 
+    }
   }
 
   actualizarActividad(){
@@ -316,14 +332,14 @@ export class EstadoCapturaComponent implements OnInit, OnChanges{
 
     const fechaSimple = this.datePipe.transform(this.actividad.fecha , 'yyyy/MM/dd')
 
-    if (this.tiempoInicio === '00:00' || this.tiempoInicio === '') { //si esta vacio se manda en 0 ✅
+    if (this.tiempoInicio === '00:00' || this.tiempoInicio === '' || this.tiempoInicio === 0) { //si esta vacio se manda en 0 ✅
       this.actualizaActividad_envio.tiempoInicio = 0;
     } else { //si tiene datos se convierte en timeStamp ✅
       const tiempoInicioTimeStamp = this.horaMinutoToDate(this.tiempoInicio + ':00', fechaSimple)
       this.actualizaActividad_envio.tiempoInicio = tiempoInicioTimeStamp;
     }
 
-    if (this.tiempoFinal === '00:00' || this.tiempoFinal === '') { //si esta vacio se manda en 0 ✅
+    if (this.tiempoFinal === '00:00' || this.tiempoFinal === '' || this.tiempoFinal === 0 ) { //si esta vacio se manda en 0 ✅
       this.actualizaActividad_envio.tiempoFinal = 0;
     } else { //si tiene datos se convierte en timeStamp ✅
       const tiempoFinalTimeStamp = this.horaMinutoToDate(this.tiempoFinal + ':00', fechaSimple)
@@ -414,9 +430,24 @@ export class EstadoCapturaComponent implements OnInit, OnChanges{
 
   }
 
-  
+  restaTiempos(){
+    
+    if (this.tiempoInicio === '00:00' || this.tiempoFinal === '00:00') { 
+      this.tiempoAcumulado = {
+        resHor: '00',
+        resMin: '00',
+        resSeg: '00'
+      }  
+      return
+    }
 
-  
+
+    const tiempoInicioTimeStamp = this.horaMinutoToDate(this.tiempoInicio + ':00', '2023/01/01')
+    const tiempoFinalTimeStamp = this.horaMinutoToDate(this.tiempoFinal + ':00', '2023/01/01')
+
+
+    this.tiempoAcumulado = this.difTiempo(tiempoInicioTimeStamp, tiempoFinalTimeStamp) 
+  }
 
 
 

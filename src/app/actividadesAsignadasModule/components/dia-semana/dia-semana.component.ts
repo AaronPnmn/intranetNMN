@@ -19,6 +19,8 @@ export class DiaSemanaComponent implements OnInit{
 
   @Input() colaboradorSeleccionado: any;
 
+  @Output() propagar = new EventEmitter<string>();
+
   actividad: registroActividad = {
     
     nombre: '',
@@ -60,6 +62,9 @@ export class DiaSemanaComponent implements OnInit{
 
   semana: any;
 
+  semanaTime: any[] = [];
+
+  acumuladoSemanal: string = '-'
 
   lunes: registroActividad[] = [];
 
@@ -186,7 +191,11 @@ export class DiaSemanaComponent implements OnInit{
     let tiempoAcumulado
  
     
-    
+    if (actividad.tiempoInicio !== 0) {
+      tiempoAcumulado = `${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resHor}:${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resMin}`
+      this.semanaTime.push( tiempoAcumulado );
+      
+    }
 
       
       switch (actividad.dia) {
@@ -196,6 +205,7 @@ export class DiaSemanaComponent implements OnInit{
           if (actividad.tiempoInicio !== 0) {
             tiempoAcumulado = `${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resHor}:${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resMin}`
             this.domingoTime.push( tiempoAcumulado );
+            this.semanaTime.push( tiempoAcumulado );
           }
           
           break;
@@ -338,6 +348,9 @@ export class DiaSemanaComponent implements OnInit{
             this.acumuladoJueves = this.getAcumuladoDia(this.juevesTime)
             this.acumuladoViernes = this.getAcumuladoDia(this.viernesTime)
             this.acumuladoSabado = this.getAcumuladoDia(this.sabadoTime)
+
+            this.acumuladoSemanal = this.getAcumuladoDia(this.semanaTime)
+            this.propagar.emit(this.acumuladoSemanal);
           } 
         )
   }

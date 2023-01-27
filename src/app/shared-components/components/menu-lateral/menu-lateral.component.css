@@ -29,7 +29,9 @@
 
 .menuOpt.active{
     color: black;
-    border-right: 6px solid #CECC00;
+    box-shadow: -7px 0px 0px 0px #cecc00 inset;
+    -webkit-box-shadow: -7px 0px 0px 0px #cecc00 inset;
+    -moz-box-shadow: -7px 0px 0px 0px #cecc00 inset;
 }
 
 .menuBody{
@@ -47,6 +49,6 @@
 }
 
 .menuFooter .nmnLogo{
-    width: 50%;
+    width: 45%;
     
 }

@@ -22,6 +22,11 @@
                 history
             </mat-icon>
         </button>
+
+        <div class="acumuladoSemanalWrapper">
+            <div>Acumulado Semanal</div>
+            <div class="acumuladoTotal">{{acumuladoSemanal}}</div>
+        </div>
     </div>
 
     <mat-form-field appearance="outline" class="colaboradorSelect" *ngIf="rol === 'admin'">
@@ -42,6 +47,7 @@
 <div class="colaboradorWrapper">
 
     <app-dia-semana 
+        (propagar)="procesaPropagar($event)"
         *appRecarga="reloadSemana"
         [diasEnSemana]='diasEnSemana'
         [diaActual]='diaActual'

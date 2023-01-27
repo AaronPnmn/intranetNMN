@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { registroActividad } from '../../Interfaces/capturaActividad.interface';
+import { elementoLista, registroActividad } from '../../Interfaces/capturaActividad.interface';
 import { CapturaActividadService } from '../../services/capturaActividad.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -48,6 +48,10 @@ export class EstadoDuplicarComponent {
 
   fechaCopia: any;
 
+  nuevo: elementoLista = {
+    contenido: '',
+    estatus: false
+  }
 
   nuevaActividadDuplicada_envio: any = {
 
@@ -106,6 +110,31 @@ export class EstadoDuplicarComponent {
     
   }
 
+  checkElemento( index:number ): void{
+
+    this.actividad.lista[index].estatus = !this.actividad.lista[index].estatus
+
+    
+
+  }
+
+  eliminarElemento( index:number ): void{
+    console.log("elemento a eliminar:", this.actividad.lista[index].contenido);
+    this.actividad.lista[index].estatus
+    if (index > -1) { 
+    this.actividad.lista.splice(index, 1); 
+    }
+  }
+
+
+  agregarCheckList() {
+
+    if (this.nuevo.contenido.trim().length === 0) { return; }
+
+    this.actividad.lista.push({ ...this.nuevo });
+    this.nuevo.contenido = '';
+
+  }
 
 
 }

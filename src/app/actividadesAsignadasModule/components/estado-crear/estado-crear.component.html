@@ -119,12 +119,16 @@
   <div *ngIf=" actividad.lista.length != 0" class="listWrapp">
 
   <mat-selection-list>
-    <mat-list-option 
-      *ngFor="let dato of actividad.lista; let i = index" 
-      class="form-check" 
-      [value]="dato.estatus" [selected]="dato.estatus">
-      {{ dato.contenido }}
-    </mat-list-option>
+
+    <div class="optionCheckWrapp" *ngFor="let dato of actividad.lista; let i = index">
+      <mat-list-option class="form-check" [ngClass]="{'checked': dato.estatus}" [value]="dato.estatus" [selected]="dato.estatus" (click)="checkElemento(i)">
+        {{ dato.contenido }}
+      </mat-list-option>
+      <button mat-icon-button class="btnEliminarCheck" (click)="eliminarElemento(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+
   </mat-selection-list>
 
   </div>
@@ -139,7 +143,7 @@
     </mat-form-field>
 
     <div class="checkList-2">
-      <button mat-icon-button mat-mini-fab type="submit">
+      <button mat-icon-button mat-mini-fab type="submit" color="primary">
         <mat-icon>add</mat-icon>
       </button>
     </div>
