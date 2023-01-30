@@ -8,13 +8,14 @@
     box-sizing: border-box;
     background-repeat: no-repeat;
     background-position: 50% 116%;
-
+    background-color: #f6f6f6;
 }
 
 .loginCard{
     width: 390px;
     padding: 40px 0;
     position: relative;
+    ;
 }
 
 .login_form{

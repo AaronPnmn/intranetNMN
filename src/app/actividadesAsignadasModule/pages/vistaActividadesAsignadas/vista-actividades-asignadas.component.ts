@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 import { Usuario } from 'src/app/auth/interfaces/interfaces';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { CapturaActividadService } from '../../services/capturaActividad.service';
@@ -46,11 +47,16 @@ export class VistaActividadesAsignadasComponent implements OnInit {
   constructor( private capturaService:CapturaActividadService,
                private sidenavService:SidenavService,
                private authService:AuthService,
-               private datePipe:DatePipe ) { }
+               private datePipe:DatePipe,
+               private router: Router ) { }
   
 
   refreshSemana(){
     ++this.capturaService.reloadSemana
+  }
+
+  navigate(ruta:string):void {
+    this.router.navigateByUrl(ruta);
   }
   
   onClosed(){

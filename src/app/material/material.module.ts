@@ -18,6 +18,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   exports: [
     TextFieldModule,
     MatCardModule,
+    MatMenuModule,
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,

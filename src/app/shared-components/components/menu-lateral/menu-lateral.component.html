@@ -8,6 +8,13 @@
 <div class="menuBody">
     <mat-nav-list>
 
+        <a  class="menuOpt" [ngClass]="{'active': pagina === ''}"
+            (click)="navigate('/')"
+            disabled
+            mat-list-item>
+            <mat-icon class="menuIcon" mat-list-icon>notifications</mat-icon>
+            <span>Avisos</span>
+        </a>
 
         <a  class="menuOpt" [ngClass]="{'active': pagina === 'actividades'}"
             (click)="navigate('/actividades')"
@@ -16,14 +23,43 @@
             <span>Actividades Asignadas</span>
          </a>
     
-    
+
         <a  class="menuOpt"
-            
+            disabled
+            [ngClass]="{'active': pagina === ''}"
+            (click)="navigate('/')"
+            mat-list-item>
+            <mat-icon class="menuIcon" mat-list-icon >perm_contact_calendar</mat-icon>
+            <span>Asistencia a estudio</span>
+        </a>
+
+        <a  class="menuOpt"
+            disabled
+            [ngClass]="{'active': pagina === ''}"
+            (click)="navigate('/')"
+            mat-list-item>
+            <mat-icon class="menuIcon" mat-list-icon >event_available</mat-icon>
+            <span>Agenda de reuniones</span>
+        </a>
+
+        <a  class="menuOpt"
+            disabled
             [ngClass]="{'active': pagina === 'clientes'}"
             (click)="navigate('/clientes')"
             mat-list-item>
             <mat-icon class="menuIcon" mat-list-icon >groups</mat-icon>
             <span>Clientes / Proyectos</span>
+        </a>
+
+
+
+        <a  class="menuOpt"
+            disabled
+            [ngClass]="{'active': pagina === 'clientes'}"
+            (click)="navigate('/clientes')"
+            mat-list-item>
+            <mat-icon class="menuIcon" mat-list-icon >bar_chart</mat-icon>
+            <span>Reportes</span>
         </a>
     
     

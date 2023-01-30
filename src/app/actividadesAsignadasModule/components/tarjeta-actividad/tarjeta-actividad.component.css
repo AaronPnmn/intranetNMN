@@ -42,5 +42,17 @@
     overflow: hidden;
     white-space: nowrap;
     padding: 0 4%;
+}
 
+.actividad .actividadLabel.enCurso{
+    color: #28a745;
+    font-style: italic;
+    padding-left: 0.7em;
+    font-weight: 500;
+}
+
+.actividad .actividadLabel.concluida{
+    color: #3540529c;
+    font-style: italic;
+    padding-left: 0.7em;
 }

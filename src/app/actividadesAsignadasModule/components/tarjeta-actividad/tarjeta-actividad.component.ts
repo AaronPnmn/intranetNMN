@@ -71,7 +71,7 @@ export class TarjetaActividadComponent implements OnInit {
     }
 
     if (this.actividad.tiempoInicio !== 0 && this.actividad.tiempoFinal !== 0) {
-      this.timeStatus = 'tiempo final'
+      this.timeStatus = 'tiempoFinal'
       this.timeStatus = `${this.difTiempo(this.actividad.tiempoInicio, this.actividad.tiempoFinal).resHor}:${this.difTiempo(this.actividad.tiempoInicio, this.actividad.tiempoFinal).resMin}`
     }
 

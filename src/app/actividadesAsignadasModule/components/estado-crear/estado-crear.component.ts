@@ -52,7 +52,6 @@ export class EstadoCrearComponent implements OnInit {
       name: ''
     }]
   }
-  private _baseUrl: string = environment.apiBaseUrl;
   clientes: any[] = [];
   proyectos: any[] = [];
   colaboradores: any[] = [];
@@ -188,14 +187,14 @@ export class EstadoCrearComponent implements OnInit {
     
     const fechaSimple = this.pipe.transform(this.nuevaActividad_envio.fecha, 'yyyy/MM/dd')
 
-    if (this.nuevaActividad_envio.tiempoInicio === '00:00') { //si esta vacio se manda en 0 ✅      
+    if (this.nuevaActividad_envio.tiempoInicio === '00:00' || this.nuevaActividad_envio.tiempoInicio === '') { //si esta vacio se manda en 0 ✅      
       this.nuevaActividad_envio.tiempoInicio = 0;
     } else { //si tiene datos se convierte en timeStamp ✅
       const tiempoInicioTimeStamp = this.horaMinutoToDate(this.nuevaActividad_envio.tiempoInicio + ':00', fechaSimple)
       this.nuevaActividad_envio.tiempoInicio = tiempoInicioTimeStamp;
     }
 
-    if (this.nuevaActividad_envio.tiempoFinal === '00:00') { //si esta vacio se manda en 0 ✅
+    if (this.nuevaActividad_envio.tiempoFinal === '00:00' || this.nuevaActividad_envio.tiempoFinal === '') { //si esta vacio se manda en 0 ✅
       this.nuevaActividad_envio.tiempoFinal = 0;
     } else { //si tiene datos se convierte en timeStamp ✅
       const tiempoFinalTimeStamp = this.horaMinutoToDate(this.nuevaActividad_envio.tiempoFinal + ':00', fechaSimple)

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://nmn.com.mx/api'
+  apiBaseUrl: 'https://backend.nmn.com.mx/api'
 };
 
 /*

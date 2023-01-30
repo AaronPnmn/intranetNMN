@@ -23,10 +23,11 @@
                             (click)="menuDrawer.toggle()">
                         <mat-icon>menu</mat-icon>
                       </button>
-                    <div class="userButton">
-                        <mat-icon style="font-size: 30px; width: 30px; height: 30px;">account_circle</mat-icon>
-                        <span>{{user.name}}</span>
-                    </div>
+
+                    <button mat-button class="userButton" [matMenuTriggerFor]="userMenu"><mat-icon style="font-size: 30px; width: 30px; height: 30px;">account_circle</mat-icon> {{user.name}}</button>
+                    <mat-menu #userMenu="matMenu">
+                        <button mat-menu-item (click)="navigate('/auth')">Cerrar Sesión</button>
+                    </mat-menu>
                 </mat-toolbar>
 
 
@@ -47,7 +48,7 @@
                         <mat-tab label="Semana">
                             <app-semana [rol]="user.rol"></app-semana>
                         </mat-tab>
-                        <mat-tab label="Mes">
+                        <mat-tab label="Mes" disabled>
                             <app-mes></app-mes>
                         </mat-tab>
                     </mat-tab-group>

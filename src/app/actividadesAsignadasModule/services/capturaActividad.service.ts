@@ -1,6 +1,7 @@
 import { HttpBackend, HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, map, tap } from "rxjs";
+import { environment } from "src/environments/environment";
 import { acumuladorTiempo, acumuladorTiempoNumber, acumuladorTiempoString, registroActividad } from "../Interfaces/capturaActividad.interface";
 
 
@@ -10,8 +11,9 @@ import { acumuladorTiempo, acumuladorTiempoNumber, acumuladorTiempoString, regis
 })
 export class CapturaActividadService {
 
-  //public sideNavToggleSubject: BehaviorSubject<any> = new BehaviorSubject(null); //toggleSidenav
+  private baseUrl: string = environment.apiBaseUrl;
   private _idActividad = '';
+
   private _actividad: any = {
     nombre: '',
     prioridadAlta: false,
@@ -103,7 +105,7 @@ export class CapturaActividadService {
   }
 
   postNuevaActvidad( actividad:any ){
-    const url = `https://nmn.com.mx/api/actividades`;
+    const url = `${ this.baseUrl }/api/actividades`;
     const body = actividad;
     const token = localStorage.getItem('token');
     console.log('postNuevaActividad');
@@ -115,7 +117,7 @@ export class CapturaActividadService {
   }
 
   putEditaActvidad( actividad:any, idActividad:any ){
-    const url = `https://nmn.com.mx/api/actividades/${idActividad}`;
+    const url = `${ this.baseUrl }/actividades/${idActividad}`;
     const body = actividad;
     const token = localStorage.getItem('token');
     console.log('putEditaActividad', idActividad);
@@ -128,7 +130,7 @@ export class CapturaActividadService {
   }
 
   getActividadesSemana(id_col?:string, anio?:string, semana?:string){
-    const url = `https://nmn.com.mx/api/actividades/semana/${id_col}/${anio}/${semana}`;
+    const url = `${ this.baseUrl }/actividades/semana/${id_col}/${anio}/${semana}`;
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -138,7 +140,7 @@ export class CapturaActividadService {
   }
 
   getClientes(){
-    const url = `https://nmn.com.mx/api/clientes`;
+    const url = `${ this.baseUrl }/api/clientes`;
     //console.log("token:" +localStorage.getItem('token'));
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
@@ -151,7 +153,7 @@ export class CapturaActividadService {
   }
 
   getColaboradores(){
-    const url = `https://nmn.com.mx/api/users`;
+    const url = `${ this.baseUrl }/api/users`;
     //console.log("token:" +localStorage.getItem('token'));
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
@@ -162,7 +164,7 @@ export class CapturaActividadService {
   }
 
   getProyectosPorCliente(idCliente:string){
-    const url = `https://nmn.com.mx/api/proyectos/cliente/${idCliente}`;
+    const url = `${ this.baseUrl }/api/cliente/${idCliente}`;
     //console.log("token:" +localStorage.getItem('token'));
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
@@ -173,7 +175,7 @@ export class CapturaActividadService {
   }
 
   deleteActividad(idActividad:any ){
-    const url = `https://nmn.com.mx/api/actividades/${idActividad}`;
+    const url = `${ this.baseUrl }/api/actividades/${idActividad}`;
     const token = localStorage.getItem('token');
     console.log('eliminaActividad', idActividad);
     

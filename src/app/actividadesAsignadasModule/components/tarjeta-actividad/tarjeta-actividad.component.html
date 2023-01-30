@@ -4,6 +4,6 @@
     </div>
     <div class="textWrap">
       <div class="actividadLabel"> {{actividad.nombre}} </div>
-      <div *ngIf="timeStatus !== 'asignada'" class="actividadLabel"> {{timeStatus}} </div>
+      <div *ngIf="timeStatus !== 'asignada'" class="actividadLabel" [ngClass]="timeStatus === 'EN CURSO' ? 'enCurso' : 'concluida'"> {{timeStatus}} </div>
     </div>
 </mat-card>
