@@ -34,6 +34,12 @@
 
 }
 
+.semanaWrapper .acumuladoLabel.enCurso{
+    color: #28a745;
+    font-weight: 700;
+    animation: breathOpacity 1.5s ease-out infinite normal;
+}
+
 .semanaWrapper .actividadesWrapper{
     width: 100%;
 }
@@ -55,4 +61,7 @@
 .semanaWrapper .diaWrapper.domingo:hover .btnAgregarAct{
     opacity: 100%;
 }
+
+
+
 

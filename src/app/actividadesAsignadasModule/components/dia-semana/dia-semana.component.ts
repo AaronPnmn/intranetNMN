@@ -72,6 +72,8 @@ export class DiaSemanaComponent implements OnInit{
 
   acumuladoLunes: string = '-'
 
+  lunesCurso: boolean = false;
+
  
   martes: registroActividad[] = [];
 
@@ -79,12 +81,16 @@ export class DiaSemanaComponent implements OnInit{
 
   acumuladoMartes: string = '-'
 
+  martesCurso: boolean = false;
+
  
   miercoles: registroActividad[] = [];
 
   miercolesTime: any[] = [];
 
   acumuladoMiercoles: string = '-'
+  
+  miercolesCurso: boolean = false;
 
  
   jueves: registroActividad[] = [];
@@ -93,12 +99,16 @@ export class DiaSemanaComponent implements OnInit{
 
   acumuladoJueves: string = '-'
 
+  juevesCurso: boolean = false;
+
  
   viernes: registroActividad[] = [];
 
   viernesTime: any[] = [];
 
   acumuladoViernes: string = '-'
+
+  viernesCurso: boolean = false;
 
  
   sabado: registroActividad[] = [];
@@ -107,12 +117,16 @@ export class DiaSemanaComponent implements OnInit{
 
   acumuladoSabado: string = '-'
 
+  sabadoCurso: boolean = false;
+
  
   domingo: registroActividad[] = [];
 
   domingoTime: any[] = [];
 
-  acumuladoDomingo: string = '-'
+  acumuladoDomingo: string = '-';
+
+  domingoCurso: boolean = false;
 
   constructor( private capturaService: CapturaActividadService,
                private datePipe: DatePipe,
@@ -201,8 +215,8 @@ export class DiaSemanaComponent implements OnInit{
       switch (actividad.dia) {
         case "dom": //domingo
           this.domingo.push( {...actividad} );
-
-          if (actividad.tiempoInicio !== 0) {
+          if (actividad.tiempoInicio !== 0 && actividad.tiempoFinal === 0) {this.domingoCurso = true;}
+          if (actividad.tiempoInicio !== 0 && actividad.tiempoFinal !== 0) {
             tiempoAcumulado = `${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resHor}:${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resMin}`
             this.domingoTime.push( tiempoAcumulado );
             this.semanaTime.push( tiempoAcumulado );
@@ -212,7 +226,8 @@ export class DiaSemanaComponent implements OnInit{
   
         case "lun": //lunes
           this.lunes.push( {...actividad} );
-          if (actividad.tiempoInicio !== 0) {
+          if (actividad.tiempoInicio !== 0 && actividad.tiempoFinal === 0) {this.lunesCurso = true;}
+          if (actividad.tiempoInicio !== 0 && actividad.tiempoFinal !== 0) {
             tiempoAcumulado = `${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resHor}:${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resMin}`
             this.lunesTime.push( tiempoAcumulado );
           }
@@ -220,7 +235,8 @@ export class DiaSemanaComponent implements OnInit{
   
         case "mar": //martes
           this.martes.push( {...actividad} );
-          if (actividad.tiempoInicio !== 0) {
+          if (actividad.tiempoInicio !== 0 && actividad.tiempoFinal === 0) {this.martesCurso = true;}
+          if (actividad.tiempoInicio !== 0 && actividad.tiempoFinal !== 0) {
             tiempoAcumulado = `${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resHor}:${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resMin}`
             this.martesTime.push( tiempoAcumulado );
           }
@@ -228,14 +244,16 @@ export class DiaSemanaComponent implements OnInit{
   
         case "mié": //miercoles
           this.miercoles.push( {...actividad} );
-          if (actividad.tiempoInicio !== 0) {
+          if (actividad.tiempoInicio !== 0 && actividad.tiempoFinal === 0) {this.miercolesCurso = true;}
+          if (actividad.tiempoInicio !== 0 && actividad.tiempoFinal !== 0) {
             tiempoAcumulado = `${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resHor}:${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resMin}`
             this.miercolesTime.push( tiempoAcumulado );
           }
           break;
         case "jue": //jueves
           this.jueves.push( {...actividad} );
-          if (actividad.tiempoInicio !== 0) {
+          if (actividad.tiempoInicio !== 0 && actividad.tiempoFinal === 0) {this.juevesCurso = true;}
+          if (actividad.tiempoInicio !== 0 && actividad.tiempoFinal !== 0) {
             tiempoAcumulado = `${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resHor}:${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resMin}`
             this.juevesTime.push( tiempoAcumulado );
           }
@@ -243,7 +261,9 @@ export class DiaSemanaComponent implements OnInit{
   
         case "vie": //viernes
           this.viernes.push( {...actividad} );
-          if (actividad.tiempoInicio !== 0) {
+
+          if (actividad.tiempoInicio !== 0 && actividad.tiempoFinal === 0) {this.viernesCurso = true;}
+          if (actividad.tiempoInicio !== 0 && actividad.tiempoFinal !== 0) {
             tiempoAcumulado = `${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resHor}:${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resMin}`
             this.viernesTime.push( tiempoAcumulado );
           }
@@ -251,7 +271,10 @@ export class DiaSemanaComponent implements OnInit{
   
         case "sáb": //sabado
           this.sabado.push( {...actividad} );
-          if (actividad.tiempoInicio !== 0) {
+          
+          if (actividad.tiempoInicio !== 0 && actividad.tiempoFinal === 0) {this.sabadoCurso = true;}
+
+          if (actividad.tiempoInicio !== 0 && actividad.tiempoFinal !== 0) {
             tiempoAcumulado = `${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resHor}:${this.difTiempo(actividad.tiempoInicio, actividad.tiempoFinal).resMin}`
             this.sabadoTime.push( tiempoAcumulado );
           }

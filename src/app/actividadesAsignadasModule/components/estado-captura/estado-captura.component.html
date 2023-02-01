@@ -37,9 +37,9 @@
       (ngModelChange)="restaTiempos()"
       name="tiempoFinal">
     </mat-form-field></td>
-    <td><mat-form-field appearance="standard">
+    <td><mat-form-field appearance="standard" class="total">
       <mat-label>Total</mat-label>
-      <input matInput
+      <input matInput disabled
       type="text"
       [value]="tiempoAcumulado.resHor + ':' + tiempoAcumulado.resMin + ':' + tiempoAcumulado.resSeg">
     </mat-form-field></td>

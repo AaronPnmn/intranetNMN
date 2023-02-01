@@ -5,7 +5,10 @@
 <div class="semanaWrapper">
     <div class="diaWrapper domingo">
         <div class="nombre">Domingo {{diasEnSemana[0] | date:'dd'}}</div>
-        <div class="diaLabel" [ngClass]="{'active': diaActual === 0}">{{acumuladoDomingo}}</div>
+        <div class="diaLabel" [ngClass]="{'active': diaActual === 0}">
+            <div class="acumuladoLabel"
+                 [ngClass]="{'enCurso': domingoCurso}">{{acumuladoDomingo}}</div>
+        </div>
         <div class="actividadesWrapper">
             <app-tarjeta-actividad [actividad]="actividad" *ngFor="let actividad of domingo"></app-tarjeta-actividad>
         </div>
@@ -16,7 +19,10 @@
     </div>
     <div class="diaWrapper lunes">
         <div class="nombre">Lunes {{diasEnSemana[1] | date:'dd'}}</div>
-        <div class="diaLabel" [ngClass]="{'active': diaActual === 1}">{{acumuladoLunes}}</div>
+        <div class="diaLabel" [ngClass]="{'active': diaActual === 1}">
+            <div class="acumuladoLabel"
+                 [ngClass]="{'enCurso': lunesCurso}">{{acumuladoLunes}}</div>
+        </div>
         <div class="actividadesWrapper">
             <app-tarjeta-actividad [actividad]="actividad" *ngFor="let actividad of lunes"></app-tarjeta-actividad>
         </div>
@@ -28,7 +34,10 @@
 
     <div class="diaWrapper martes">
         <div class="nombre">Martes {{diasEnSemana[2] | date:'dd'}}</div>
-        <div class="diaLabel" [ngClass]="{'active': diaActual === 2}">{{acumuladoMartes}}</div>
+        <div class="diaLabel" [ngClass]="{'active': diaActual === 2}">
+            <div class="acumuladoLabel"
+                 [ngClass]="{'enCurso': martesCurso}">{{acumuladoMartes}}</div>
+        </div>
         <div class="actividadesWrapper">
             <app-tarjeta-actividad [actividad]="actividad" *ngFor="let actividad of martes"></app-tarjeta-actividad>
         </div>
@@ -40,7 +49,10 @@
 
     <div class="diaWrapper miercoles">
         <div class="nombre">Miércoles {{diasEnSemana[3] | date:'dd'}}</div>
-        <div class="diaLabel" [ngClass]="{'active': diaActual === 3}">{{acumuladoMiercoles}}</div>
+        <div class="diaLabel" [ngClass]="{'active': diaActual === 3}">
+            <div class="acumuladoLabel"
+                 [ngClass]="{'enCurso': miercolesCurso}">{{acumuladoMiercoles}}</div>
+        </div>
         <div class="actividadesWrapper">
             <app-tarjeta-actividad [actividad]="actividad" *ngFor="let actividad of miercoles"></app-tarjeta-actividad>
         </div>
@@ -52,7 +64,10 @@
 
     <div class="diaWrapper jueves">
         <div class="nombre">Jueves {{diasEnSemana[4] | date:'dd'}}</div>
-        <div class="diaLabel" [ngClass]="{'active': diaActual === 4}">{{acumuladoJueves}}</div>
+        <div class="diaLabel" [ngClass]="{'active': diaActual === 4}">
+            <div class="acumuladoLabel"
+                 [ngClass]="{'enCurso': juevesCurso}">{{acumuladoJueves}}</div>
+        </div>
         <div class="actividadesWrapper">
             <app-tarjeta-actividad [actividad]="actividad" *ngFor="let actividad of jueves"></app-tarjeta-actividad>
         </div>
@@ -64,7 +79,10 @@
 
     <div class="diaWrapper viernes">
         <div class="nombre">Viernes {{diasEnSemana[5] | date:'dd'}}</div>
-        <div class="diaLabel" [ngClass]="{'active': diaActual === 5}">{{acumuladoViernes}}</div>
+        <div class="diaLabel" [ngClass]="{'active': diaActual === 5}">
+            <div class="acumuladoLabel"
+                 [ngClass]="{'enCurso': viernesCurso}">{{acumuladoViernes}}</div>
+        </div>
         <div class="actividadesWrapper">
             <app-tarjeta-actividad [actividad]="actividad" *ngFor="let actividad of viernes"></app-tarjeta-actividad>
         </div>
@@ -76,7 +94,10 @@
 
     <div class="diaWrapper sabado">
         <div class="nombre">Sábado {{diasEnSemana[6] | date:'dd'}}</div>
-        <div class="diaLabel" [ngClass]="{'active': diaActual === 6}">{{acumuladoSabado}}</div>
+        <div class="diaLabel" [ngClass]="{'active': diaActual === 6}">
+            <div class="acumuladoLabel"
+                 [ngClass]="{'enCurso': sabadoCurso}">{{acumuladoSabado}}</div>
+        </div>
         <div class="actividadesWrapper">
             <app-tarjeta-actividad [actividad]="actividad" *ngFor="let actividad of sabado"></app-tarjeta-actividad>
         </div>

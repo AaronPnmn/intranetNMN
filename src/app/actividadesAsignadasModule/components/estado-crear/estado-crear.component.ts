@@ -69,8 +69,6 @@ export class EstadoCrearComponent implements OnInit {
   }
 
 
-  fechaPrueba = '04/01/2023';
-
   nuevo: elementoLista = {
     contenido: '',
     estatus: false
@@ -106,8 +104,8 @@ export class EstadoCrearComponent implements OnInit {
     semana: 0,//semana ✅
     mes: 0,//mes ✅
     anio: 0,//anio ✅
-    tiempoInicio: '00:00', //si esta vacio se manda en 0 ✅ || si NO esta vacio se recupera del formulario ✅ se procesa y se convierte en timeStamp ❌
-    tiempoFinal: '00:00',  //si esta vacio se manda en 0 ✅ || si NO esta vacio se recupera del formulario ✅ se procesa y se convierte en timeStamp ❌
+    tiempoInicio: '', //si esta vacio se manda en 0 ✅ || si NO esta vacio se recupera del formulario ✅ se procesa y se convierte en timeStamp ❌
+    tiempoFinal: '',  //si esta vacio se manda en 0 ✅ || si NO esta vacio se recupera del formulario ✅ se procesa y se convierte en timeStamp ❌
     fecha: 0,  //se inicia con la fecha del dia seleccionado ✅ || se puede cambiar en formulario ✅
     lista: [] //se recupera la checkList del componente ✅
 
@@ -187,14 +185,14 @@ export class EstadoCrearComponent implements OnInit {
     
     const fechaSimple = this.pipe.transform(this.nuevaActividad_envio.fecha, 'yyyy/MM/dd')
 
-    if (this.nuevaActividad_envio.tiempoInicio === '00:00' || this.nuevaActividad_envio.tiempoInicio === '') { //si esta vacio se manda en 0 ✅      
+    if (this.nuevaActividad_envio.tiempoInicio === '') { //si esta vacio se manda en 0 ✅      
       this.nuevaActividad_envio.tiempoInicio = 0;
     } else { //si tiene datos se convierte en timeStamp ✅
       const tiempoInicioTimeStamp = this.horaMinutoToDate(this.nuevaActividad_envio.tiempoInicio + ':00', fechaSimple)
       this.nuevaActividad_envio.tiempoInicio = tiempoInicioTimeStamp;
     }
 
-    if (this.nuevaActividad_envio.tiempoFinal === '00:00' || this.nuevaActividad_envio.tiempoFinal === '') { //si esta vacio se manda en 0 ✅
+    if (this.nuevaActividad_envio.tiempoFinal === '') { //si esta vacio se manda en 0 ✅
       this.nuevaActividad_envio.tiempoFinal = 0;
     } else { //si tiene datos se convierte en timeStamp ✅
       const tiempoFinalTimeStamp = this.horaMinutoToDate(this.nuevaActividad_envio.tiempoFinal + ':00', fechaSimple)

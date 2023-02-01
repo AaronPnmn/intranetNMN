@@ -98,10 +98,11 @@
         </mat-form-field>
       </td>
       <td>
-        <mat-form-field appearance="outline" class="edicionInput">
+        <mat-form-field appearance="outline" class="edicionInput total">
           <mat-label>Total</mat-label>
           <input matInput
           type="text"
+          disabled
           [value]="tiempoAcumulado.resHor + ':' + tiempoAcumulado.resMin + ':' + tiempoAcumulado.resSeg"
           name="tiempoAcumulado">
         </mat-form-field>

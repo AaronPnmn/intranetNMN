@@ -81,9 +81,10 @@
         </mat-form-field>
       </td>
       <td>
-        <mat-form-field appearance="outline" class="edicionInput">
+        <mat-form-field appearance="outline" class="edicionInput total">
           <mat-label>Total</mat-label>
           <input matInput type="text"
+            disabled
             [value]="tiempoAcumulado.resHor + ':' + tiempoAcumulado.resMin + ':' + tiempoAcumulado.resSeg">
         </mat-form-field>
       </td>
@@ -148,7 +149,7 @@
 
   <div class="footer">
     <mat-checkbox class="example-margin" [(ngModel)]="actividad.prioridadAlta" name="prioridadAlta">Prioridad alta</mat-checkbox>
-    <button mat-raised-button color="warn" type="button">Cancelar</button>
+    <button mat-raised-button color="warn" type="button" (click)="cancelarActividad()">Cancelar</button>
     <button mat-raised-button
     color="primary"
     type="submit"

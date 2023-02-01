@@ -56,6 +56,7 @@ export class VistaActividadesAsignadasComponent implements OnInit {
   }
 
   navigate(ruta:string):void {
+    localStorage.setItem('token', '')
     this.router.navigateByUrl(ruta);
   }
   

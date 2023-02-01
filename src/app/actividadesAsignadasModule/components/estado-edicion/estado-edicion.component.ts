@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { TimeEditPipe } from '../../pipes/time-edit.pipe';
 import { SidenavService } from '../../services/sidenav.service';
+import { DialogService } from '../../services/dialog.service';
 
 @Component({
   selector: 'app-estado-edicion',
@@ -149,7 +150,8 @@ export class EstadoEdicionComponent implements OnInit {
       private sidenavService:SidenavService,
       private router: Router,
       private datePipe: DatePipe,
-      private timePipe: TimeEditPipe
+      private timePipe: TimeEditPipe,
+      private dialog: DialogService,
       ) { }
 
 
@@ -234,6 +236,25 @@ export class EstadoEdicionComponent implements OnInit {
     this.actividad.lista.push({ ...this.nuevo });
     this.nuevo.contenido = '';
 
+  }
+
+  cancelarActividad(){
+
+    this.dialog
+      .confirmDialog({
+        title: 'Cancelar',
+        message: '¿Desea cancelar la edición de ésta actividad?',
+        confirmCaption: 'SI',
+        cancelCaption: 'NO',
+      })
+      .subscribe((confirmed) => {
+        if (confirmed === true) {
+          this.sidenavService.toggle();  
+        }
+        
+        
+      });
+    
   }
 
   horaMinutoToDate(horaMinuto: string, fecha: any) {

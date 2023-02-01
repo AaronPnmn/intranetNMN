@@ -3,7 +3,15 @@
       <div class="logoCliente"></div>
     </div>
     <div class="textWrap">
-      <div class="actividadLabel"> {{actividad.nombre}} </div>
-      <div *ngIf="timeStatus !== 'asignada'" class="actividadLabel" [ngClass]="timeStatus === 'EN CURSO' ? 'enCurso' : 'concluida'"> {{timeStatus}} </div>
+
+      <div class="actividadLabel" 
+           [ngClass]="{
+              'prioridadAlta' : actividad.prioridadAlta ,
+              'concluida' : timeStatus !== 'EN CURSO' && timeStatus !== 'asignada'
+            }"> {{actividad.nombre}} </div>
+
+      <div *ngIf="timeStatus !== 'asignada'" 
+           class="timeLabel" 
+           [ngClass]="timeStatus === 'EN CURSO' ? 'enCurso' : 'concluida'"> {{timeStatus}} </div>
     </div>
 </mat-card>

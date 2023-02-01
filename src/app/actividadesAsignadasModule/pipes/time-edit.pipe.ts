@@ -8,7 +8,7 @@ export class TimeEditPipe implements PipeTransform {
   transform(timeStamp: number): string {
 
     if (timeStamp === 0) {
-      return '00:00';
+      return '';
     } else {
       let hours:any = new Date(timeStamp).getHours();
       let minutes:any = new Date(timeStamp).getMinutes();

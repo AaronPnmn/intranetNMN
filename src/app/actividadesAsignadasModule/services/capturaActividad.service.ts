@@ -105,7 +105,7 @@ export class CapturaActividadService {
   }
 
   postNuevaActvidad( actividad:any ){
-    const url = `${ this.baseUrl }/api/actividades`;
+    const url = `https://backend.nmn.com.mx/api/actividades`;
     const body = actividad;
     const token = localStorage.getItem('token');
     console.log('postNuevaActividad');
@@ -140,7 +140,7 @@ export class CapturaActividadService {
   }
 
   getClientes(){
-    const url = `${ this.baseUrl }/api/clientes`;
+    const url = `${ this.baseUrl }/clientes`;
     //console.log("token:" +localStorage.getItem('token'));
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
@@ -153,7 +153,7 @@ export class CapturaActividadService {
   }
 
   getColaboradores(){
-    const url = `${ this.baseUrl }/api/users`;
+    const url = `${ this.baseUrl }/users`;
     //console.log("token:" +localStorage.getItem('token'));
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
@@ -164,7 +164,7 @@ export class CapturaActividadService {
   }
 
   getProyectosPorCliente(idCliente:string){
-    const url = `${ this.baseUrl }/api/cliente/${idCliente}`;
+    const url = `${ this.baseUrl }/proyectos/cliente/${idCliente}`;
     //console.log("token:" +localStorage.getItem('token'));
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
@@ -175,7 +175,7 @@ export class CapturaActividadService {
   }
 
   deleteActividad(idActividad:any ){
-    const url = `${ this.baseUrl }/api/actividades/${idActividad}`;
+    const url = `${ this.baseUrl }/actividades/${idActividad}`;
     const token = localStorage.getItem('token');
     console.log('eliminaActividad', idActividad);
     

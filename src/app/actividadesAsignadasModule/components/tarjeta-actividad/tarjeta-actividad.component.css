@@ -16,10 +16,6 @@
     transition: background-color .2s;
 }
 
-.actividad.track{
-    box-shadow: 0px 2px 1px -1px rgb(206 204 0 / 70%), 0px 1px 1px 0px rgb(206 204 0 / 70%), 0px 1px 3px 0px rgb(206 204 0 / 70%);
-}
-
 
 .actividad .logoSec{
     padding: 10px 0px 10px 10px;
@@ -44,15 +40,26 @@
     padding: 0 4%;
 }
 
-.actividad .actividadLabel.enCurso{
+.actividad .timeLabel.enCurso{
     color: #28a745;
     font-style: italic;
-    padding-left: 0.7em;
+    padding: 0 4%;
     font-weight: 500;
+    animation: breathOpacity 1.5s ease-out infinite normal;
 }
 
-.actividad .actividadLabel.concluida{
+.actividad .timeLabel.concluida{
     color: #3540529c;
     font-style: italic;
     padding-left: 0.7em;
+}
+
+.actividad .actividadLabel.prioridadAlta{
+    color: #dc3545;
+}
+
+.actividad .actividadLabel.concluida{
+    text-decoration: line-through;
+    color: #3540529c;
+    font-style: italic;
 }
