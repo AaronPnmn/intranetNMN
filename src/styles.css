@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif !important; }
+
+
+
+.userToolbar{
+    justify-content: flex-end;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  .mat-form-field-infix{
+    display: flex !important;
+  }
+
+  .colaboradorSelect .mat-form-field-wrapper{
+    padding-bottom: 0;
+    margin-right: 20px !important;
+  }
+
+  .userToolbar .userButton{
+    display: flex;
+    align-items: center;
+  }
+
+  .userToolbar .userButton span{
+    font-size: 15px;
+    margin-left: 0.5em;
+  }
+
+  .bg-princ{background-color: #F7F8FA !important;}
+
+  .bg-white{background-color: #FFF !important;}
+
+  .main-container{
+    padding: 35px 3%;
+  }
+
+
+  .tabActividades .mat-tab-labels{
+    width: 26%;
+}
+
+
+.menuOpt .mat-list-item-content{
+  padding-left: 30px !important;
+
+}
+
