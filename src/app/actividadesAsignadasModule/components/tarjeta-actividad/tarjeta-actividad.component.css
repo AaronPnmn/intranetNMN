@@ -1,0 +1,82 @@
+
+
+.actividad{
+    width: 95%;
+    box-sizing: border-box;
+    margin: 0em auto .6em;
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.actividad:hover{
+    background-color: #CECC00;
+    color: #fff;
+    transition: background-color .2s;
+}
+
+
+.actividad .logoSec{
+    padding: 10px 0px 10px 10px;
+}
+
+.actividad .logoSec .logoCliente{
+    height: 2.5em;
+    background-color: #d2d9e3;
+    width: 2.5em;
+    border-radius: 100%;
+    margin: auto;
+}
+
+.actividad .textWrap{
+    width: 100%;
+}
+
+.actividad .actividadLabel{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+}
+
+.actividad .timeLabel.enCurso{
+    color: #28a745;
+    font-style: italic;
+
+    font-weight: 500;
+    animation: breathOpacity 1.5s ease-out infinite normal;
+}
+
+.actividad .timeLabel.concluida{
+    color: #3540529c;
+    font-style: italic;
+    display: flex;
+    justify-content: space-between;
+}
+
+.actividad .timeLabel.concluida .tiempoTotal{
+    font-style: normal;
+    color: rgba(0, 0, 0, 0.87);
+    font-weight: 500;
+}
+
+.actividad .timeLabel.enCurso .tiemposInicioFin{
+ display: none;
+ 
+}
+
+.actividad .timeLabel.concluida .tiemposInicioFin{
+ font-size: 13px;
+}
+
+.actividad .actividadLabel.prioridadAlta{
+    color: #dc3545;
+}
+
+.actividad .actividadLabel.concluida{
+    text-decoration: line-through;
+    color: #3540529c;
+    font-style: italic;
+}
