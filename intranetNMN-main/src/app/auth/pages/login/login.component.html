@@ -1,0 +1,57 @@
+<div class="loginWrapper" style="background-image: url(../../../../assets/images/Mural-NMN.png) ;">
+    <mat-card class="loginCard">
+        <mat-card-content>
+          <div class="logoBox">
+            <img class="nmnLogo" src='../../../../assets/images/logoHder.svg'>
+          </div>
+
+            <form class="login_form" 
+            autocomplete="on"
+            [formGroup]="miFormulario"
+            (ngSubmit)="login()" >
+            
+          
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput
+                   required
+                   type="email" 
+                   formControlName="email" 
+                   placeholder="Ingrese su email">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput
+                   required
+                   type="password" 
+                   formControlName="password" 
+                   placeholder="Ingrese su contraseña">
+          </mat-form-field>
+
+
+          <div class="buttonWrap">
+            <button mat-raised-button 
+                    color="accent" 
+                    type="submit" 
+                    [disabled]="miFormulario.invalid">Ingresar</button>
+          </div>
+
+          
+      
+
+      </form>
+        </mat-card-content>
+    </mat-card>
+
+
+    
+    
+</div>
+
+
+
+
+
+

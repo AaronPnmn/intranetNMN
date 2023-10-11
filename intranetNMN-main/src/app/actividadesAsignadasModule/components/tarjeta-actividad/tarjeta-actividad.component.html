@@ -1,0 +1,24 @@
+<mat-card class="actividad" matTooltip="{{actividad.nombre}}" (click)="abrirActividad(actividad)">
+      <!-- <div class="logoSec">
+        <div class="logoCliente"></div>
+      </div> -->
+    <div class="textWrap">
+
+      <div class="actividadLabel" 
+           [ngClass]="{
+              'prioridadAlta' : actividad.prioridadAlta ,
+              'concluida' : timeStatus !== 'EN CURSO' && timeStatus !== 'asignada'
+            }"> {{actividad.nombre}} </div>
+
+      <div *ngIf="timeStatus !== 'asignada'" 
+           class="timeLabel" 
+           [ngClass]="timeStatus === 'EN CURSO' ? 'enCurso' : 'concluida'">
+              <div class="tiemposInicioFin">
+                {{ actividad.tiempoInicio | date:'hh:mm' }} - {{ actividad.tiempoFinal | date:'hh:mm' }}
+              </div>
+              <div class="tiempoTotal">
+                {{timeStatus}} 
+              </div>
+            </div>
+    </div>
+</mat-card>

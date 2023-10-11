@@ -1,0 +1,26 @@
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          {{cliente.razon_social}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <div class="numProy uno">
+            {{totalProyectos}} Proyectos
+        </div>
+        <div class="dos">
+          <div class="numHoras">
+              {{horasTotal}}
+            </div>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <!-- <div class="proyRow" *ngFor="let proyecto of proyectos" (click)="openDetalleProyecto(proyecto._id, proyecto.nombre, cliente.razon_social, proyectos, proyecto.horasProyecto)">
+      <div class="nombreProy">{{proyecto.nombre}}</div>
+      <div class="horasProy">{{proyecto.horasProyecto}}</div>
+    </div>
+
+    <mat-action-row>
+      <button mat-button color="primary">Ver Detalle de cliente</button>
+    </mat-action-row> -->
+  </mat-expansion-panel>
