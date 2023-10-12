@@ -1,0 +1,23 @@
+.proyRow{
+    display: flex;
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+.proyRow:hover{
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.proyRow .nombreProy{
+    width: 53%;
+    padding-right: 1em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.proyRow .horasProy{
+    color: rgba(0, 0, 0, 0.54);
+}
+
+

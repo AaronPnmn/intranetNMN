@@ -1,0 +1,60 @@
+<mat-card class="capturarActividad">
+    <mat-card-content class="">
+
+      <div class="header">
+        <div class="uno">
+          <div class="card-title" *ngIf=" estado == 'captura' " [matTooltip]="actividad.nombre" style=" max-width: 45%;">{{ actividad.nombre }}</div>
+          <div class="card-title" *ngIf=" estado == 'editar' ">Editar Actividad</div>
+          <div class="card-title" *ngIf=" estado == 'copiar' ">Copiar Actividad</div>
+          <div class="card-title" *ngIf=" estado == 'crear' ">Crear Actividad</div>
+          <div class="prioridad" *ngIf=" estado == 'captura' ">
+            <mat-slide-toggle class="example-margin" color="warn" [(ngModel)]="actividad.prioridadAlta" name="prioridadAlta">
+              <div class="slideTogglePrioridad">
+                <mat-icon>warning</mat-icon>
+                <div class="label">Prioridad Alta</div>
+              </div>
+            </mat-slide-toggle>
+          </div>
+        </div>
+        <!-- <div class="dos" *ngIf=" estado == 'crear' " style="justify-content: end;">
+          <div class="botonCirc"
+            (click)="cerrarDrawer()">
+            <mat-icon>close</mat-icon>
+          </div>
+        </div> -->
+        <div class="dos" *ngIf=" estado != 'crear' ">
+          <div class="botonCirc"
+            [ngClass]="{'active': estado === 'editar'}" 
+            (click)="cambiaEstado('editar')"
+            matTooltip="Editar">
+            <mat-icon>edit</mat-icon>
+          </div>
+          <div class="botonCirc"
+            [ngClass]="{'active': estado === 'copiar'}"
+            (click)="cambiaEstado('copiar')"
+            matTooltip="Duplicar">
+            <mat-icon>content_copy</mat-icon>
+          </div>
+          <!-- <div class="botonCirc"
+            [ngClass]="{'active': estado === 'captura'}"
+            (click)="cambiaEstado('captura')">
+            <mat-icon>more_time</mat-icon>
+          </div> -->
+          <div class="botonCirc"
+            (click)="cerrarDrawer()"
+            matTooltip="Cerrar">
+            <mat-icon>close</mat-icon>
+          </div>
+        </div>
+      </div>
+
+      <app-estado-captura [actividad]="actividad" *ngIf=" estado == 'captura' " [onToggled]="onToggled"></app-estado-captura>
+
+      <app-estado-duplicar [actividad]="actividad" *ngIf=" estado == 'copiar' "></app-estado-duplicar>
+
+      <app-estado-edicion [actividad]="actividad" *ngIf=" estado == 'editar' "></app-estado-edicion>
+
+      <app-estado-crear [actividad]="actividad" *ngIf=" estado == 'crear' " [rol]="rol"></app-estado-crear>
+    </mat-card-content>
+  </mat-card>
+  
