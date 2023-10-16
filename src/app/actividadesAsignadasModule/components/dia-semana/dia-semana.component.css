@@ -1,0 +1,102 @@
+
+
+
+.semanaWrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.semanaWrapper.todos .diaWrapper,
+.semanaWrapper.soloDom .diaWrapper.domingo,
+.semanaWrapper.soloLun .diaWrapper.lunes,
+.semanaWrapper.soloMar .diaWrapper.martes,
+.semanaWrapper.soloMier .diaWrapper.miercoles,
+.semanaWrapper.soloJue .diaWrapper.jueves,
+.semanaWrapper.soloVie .diaWrapper.viernes,
+.semanaWrapper.soloSab .diaWrapper.sabado{
+    display: flex;
+}
+
+.semanaWrapper.soloDom .diaWrapper.domingo,
+.semanaWrapper.soloLun .diaWrapper.lunes,
+.semanaWrapper.soloMar .diaWrapper.martes,
+.semanaWrapper.soloMier .diaWrapper.miercoles,
+.semanaWrapper.soloJue .diaWrapper.jueves,
+.semanaWrapper.soloVie .diaWrapper.viernes,
+.semanaWrapper.soloSab .diaWrapper.sabado{
+    width: calc(40%);
+}
+
+.semanaWrapper.soloDom .diaWrapper.domingo{
+
+}
+
+.semanaWrapper .diaWrapper.active{
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
+
+.semanaWrapper .diaWrapper{
+    width: calc(100% / 7);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1em 0;
+}
+
+.semanaWrapper .diaLabel{
+    font-size: 15px;
+    border-bottom: 2px solid #E2E7EE;
+    width: 83%;
+    text-align: center;
+    padding-bottom: 0.7em;
+    margin-bottom: 1.3em;
+    color: #747d8d;
+    position: relative;
+}
+
+.semanaWrapper .diaWrapper.active .diaLabel::before{
+    position: absolute;
+    height: 4px;
+    background-color: #CECC00;
+    bottom: -3px;
+    right: 0;
+    width: 100%;
+    content: '';
+    border-radius: 4px;
+
+}
+
+.semanaWrapper .acumuladoLabel.enCurso{
+    color: #28a745;
+    font-weight: 700;
+    animation: breathOpacity 1.5s ease-out infinite normal;
+}
+
+.semanaWrapper .actividadesWrapper{
+    width: 100%;
+    min-height: 3rem;
+}
+
+
+.semanaWrapper .btnAgregarAct {
+    opacity: 0%;
+    transition: opacity .3s;
+    background-color: #E2E7EE;
+    color: #354052;
+}
+
+.semanaWrapper .diaWrapper.lunes:hover .btnAgregarAct,
+.semanaWrapper .diaWrapper.martes:hover .btnAgregarAct,
+.semanaWrapper .diaWrapper.miercoles:hover .btnAgregarAct,
+.semanaWrapper .diaWrapper.jueves:hover .btnAgregarAct,
+.semanaWrapper .diaWrapper.viernes:hover .btnAgregarAct,
+.semanaWrapper .diaWrapper.sabado:hover .btnAgregarAct,
+.semanaWrapper .diaWrapper.domingo:hover .btnAgregarAct{
+    opacity: 100%;
+}
+
+
+
+

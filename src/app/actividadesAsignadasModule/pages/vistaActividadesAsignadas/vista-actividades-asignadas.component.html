@@ -1,0 +1,74 @@
+<!-- Primer Sidenav -->
+
+<mat-sidenav-container fullscreen> 
+
+
+
+    <mat-sidenav-content >
+        <!-- Segundo Sidenav -->
+        <mat-sidenav-container fullscreen>
+            
+            <!-- Drawer Menu -->
+            <mat-sidenav mode="over" #menuDrawer> 
+                <app-menu-lateral [pagina]="'actividades'"></app-menu-lateral>
+            </mat-sidenav>
+            <!-- Drawer Menu -->
+            
+
+            <mat-sidenav-content class="bg-princ" >
+                
+                <mat-toolbar class="userToolbar bg-white">
+                    <button mat-icon-button
+                            color="primary"
+                            (click)="menuDrawer.toggle()">
+                        <mat-icon>menu</mat-icon>
+                      </button>
+
+                    <button mat-button class="userButton" [matMenuTriggerFor]="userMenu"><div class="avatarUser" [style]="user.avatar"></div>{{user.name}}</button>
+                    <mat-menu #userMenu="matMenu">
+                        <button mat-menu-item (click)="navigate('/auth')">Cerrar Sesión</button>
+                    </mat-menu>
+                </mat-toolbar>
+
+
+                <div class="main-container">
+
+                    <!-- Vista Actividades Asignadas -->
+                    <div class="actHeader">
+                        <div class="titHeader">Actividades Asignadas</div>
+                        <div class="acumuladosWrapp">
+                            <div class="acumulado">
+                                <div class="tit1">Semana {{ fechaActual | date:'w' }}</div>
+                                <div class="tit2">{{ fechaActual | date:'d/MM/yyyy' }}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" class="tabActividades">
+                        <mat-tab label="Semana">
+                            <app-semana [rol]="user.rol"></app-semana>
+                        </mat-tab>
+                        <mat-tab label="Mes" disabled>
+                            <app-mes></app-mes>
+                        </mat-tab>
+                    </mat-tab-group>
+                    <!-- Vista Actividades Asignadas -->
+
+                </div>
+                
+            </mat-sidenav-content>
+
+        </mat-sidenav-container>
+        <!-- Segundo Sidenav -->
+    </mat-sidenav-content>
+
+    <!-- Drawer Captura -->
+    <mat-sidenav #drawer [mode]="modeDrawer"  position="end" (closedStart)="startClose()">
+        <div></div>
+        <app-capturarActividad [onToggled]="onToggled" [rol]="user.rol"></app-capturarActividad>
+    </mat-sidenav>
+    <!-- Drawer Captura -->
+
+</mat-sidenav-container>
+
+<!-- Primer Sidenav -->

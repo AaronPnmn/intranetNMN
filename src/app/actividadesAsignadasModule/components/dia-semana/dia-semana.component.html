@@ -1,0 +1,137 @@
+
+
+
+<div class="semanaWrapper" [ngClass]="vistaDia">
+    <div class="diaWrapper domingo" [ngClass]="{'active': diaActual === 0}">
+        <div class="nombre">Domingo {{diasEnSemana[0] | date:'dd'}}</div>
+        <div class="diaLabel">
+            <div class="acumuladoLabel"
+                 [ngClass]="{'enCurso': domingoCurso}">{{acumuladoDomingo}}</div>
+        </div>
+        <div class="actividadesWrapper"
+            cdkDropList
+            #domingoList="cdkDropList"
+            [cdkDropListData]="domingo"
+            [cdkDropListConnectedTo]="[domingoList,lunesList,martesList,miercolesList,viernesList,sabadoList]"
+            (cdkDropListDropped)="drop($event, diasEnSemana[0])">
+            <app-tarjeta-actividad cdkDrag [cdkDragData]="actividad" [actividad]="actividad" *ngFor="let actividad of domingo"></app-tarjeta-actividad>
+        </div>
+        <button class="btnAgregarAct" mat-mini-fab (click)="crearActividad(0, 'soloDom')">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <div class="diaWrapper lunes" [ngClass]="{'active': diaActual === 1}">
+        <div class="nombre">Lunes {{diasEnSemana[1] | date:'dd'}}</div>
+        <div class="diaLabel">
+            <div class="acumuladoLabel"
+                 [ngClass]="{'enCurso': lunesCurso}">{{acumuladoLunes}}</div>
+        </div>
+        <div class="actividadesWrapper"
+            cdkDropList
+            #lunesList="cdkDropList"
+            [cdkDropListData]="lunes"
+            [cdkDropListConnectedTo]="[domingoList,lunesList,martesList,miercolesList,viernesList,sabadoList]"
+            (cdkDropListDropped)="drop($event, diasEnSemana[1])">
+            <app-tarjeta-actividad cdkDrag [cdkDragData]="actividad" [actividad]="actividad" *ngFor="let actividad of lunes"></app-tarjeta-actividad>
+        </div>
+        <button class="btnAgregarAct" mat-mini-fab (click)="crearActividad(1, 'soloLun')">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <div class="diaWrapper martes" [ngClass]="{'active': diaActual === 2}">
+        <div class="nombre">Martes {{diasEnSemana[2] | date:'dd'}}</div>
+        <div class="diaLabel">
+            <div class="acumuladoLabel"
+                 [ngClass]="{'enCurso': martesCurso}">{{acumuladoMartes}}</div>
+        </div>
+        <div class="actividadesWrapper"
+            cdkDropList
+            #martesList="cdkDropList"
+            [cdkDropListData]="martes"
+            [cdkDropListConnectedTo]="[domingoList,lunesList,martesList,miercolesList,juevesList,viernesList,sabadoList]"
+            (cdkDropListDropped)="drop($event, diasEnSemana[2])">
+            <app-tarjeta-actividad cdkDrag [cdkDragData]="actividad" [actividad]="actividad" *ngFor="let actividad of martes"></app-tarjeta-actividad>
+        </div>
+        <button class="btnAgregarAct" mat-mini-fab (click)="crearActividad(2, 'soloMar')">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <div class="diaWrapper miercoles" [ngClass]="{'active': diaActual === 3}">
+        <div class="nombre">Miércoles {{diasEnSemana[3] | date:'dd'}}</div>
+        <div class="diaLabel">
+            <div class="acumuladoLabel"
+                 [ngClass]="{'enCurso': miercolesCurso}">{{acumuladoMiercoles}}</div>
+        </div>
+        <div class="actividadesWrapper"
+            cdkDropList
+            #miercolesList="cdkDropList"
+            [cdkDropListData]="miercoles"
+            [cdkDropListConnectedTo]="[domingoList,lunesList,martesList,miercolesList,juevesList,viernesList,sabadoList]"
+            (cdkDropListDropped)="drop($event, diasEnSemana[3])">
+            <app-tarjeta-actividad cdkDrag [cdkDragData]="actividad" [actividad]="actividad" *ngFor="let actividad of miercoles"></app-tarjeta-actividad>
+        </div>
+        <button class="btnAgregarAct" mat-mini-fab (click)="crearActividad(3, 'soloMier')">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <div class="diaWrapper jueves" [ngClass]="{'active': diaActual === 4}">
+        <div class="nombre">Jueves {{diasEnSemana[4] | date:'dd'}}</div>
+        <div class="diaLabel">
+            <div class="acumuladoLabel"
+                 [ngClass]="{'enCurso': juevesCurso}">{{acumuladoJueves}}</div>
+        </div>
+        <div class="actividadesWrapper"
+            cdkDropList
+            #juevesList="cdkDropList"
+            [cdkDropListData]="jueves"
+            [cdkDropListConnectedTo]="[domingoList,lunesList,martesList,miercolesList,juevesList,viernesList,sabadoList]"
+            (cdkDropListDropped)="drop($event, diasEnSemana[4])">
+            <app-tarjeta-actividad cdkDrag [cdkDragData]="actividad" [actividad]="actividad" *ngFor="let actividad of jueves"></app-tarjeta-actividad>
+        </div>
+        <button class="btnAgregarAct" mat-mini-fab (click)="crearActividad(4, 'soloJue')">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <div class="diaWrapper viernes" [ngClass]="{'active': diaActual === 5}">
+        <div class="nombre">Viernes {{diasEnSemana[5] | date:'dd'}}</div>
+        <div class="diaLabel">
+            <div class="acumuladoLabel"
+                 [ngClass]="{'enCurso': viernesCurso}">{{acumuladoViernes}}</div>
+        </div>
+        <div class="actividadesWrapper"
+            cdkDropList
+            #viernesList="cdkDropList"
+            [cdkDropListData]="viernes"
+            [cdkDropListConnectedTo]="[domingoList,lunesList,martesList,miercolesList,juevesList,viernesList,sabadoList]"
+            (cdkDropListDropped)="drop($event, diasEnSemana[5])">
+            <app-tarjeta-actividad cdkDrag [cdkDragData]="actividad" [actividad]="actividad" *ngFor="let actividad of viernes"></app-tarjeta-actividad>
+        </div>
+        <button class="btnAgregarAct" mat-mini-fab (click)="crearActividad(5, 'soloVie')">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <div class="diaWrapper sabado" [ngClass]="{'active': diaActual === 6}">
+        <div class="nombre">Sábado {{diasEnSemana[6] | date:'dd'}}</div>
+        <div class="diaLabel">
+            <div class="acumuladoLabel"
+                 [ngClass]="{'enCurso': sabadoCurso}">{{acumuladoSabado}}</div>
+        </div>
+        <div class="actividadesWrapper"
+            cdkDropList
+            #sabadoList="cdkDropList"
+            [cdkDropListData]="sabado"
+            [cdkDropListConnectedTo]="[domingoList,lunesList,martesList,miercolesList,juevesList,viernesList,sabadoList]"
+            (cdkDropListDropped)="drop($event, diasEnSemana[6])">
+            <app-tarjeta-actividad cdkDrag [cdkDragData]="actividad" [actividad]="actividad" *ngFor="let actividad of sabado"></app-tarjeta-actividad>
+        </div>
+        <button class="btnAgregarAct" mat-mini-fab (click)="crearActividad(6, 'soloSab')">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+
+</div>

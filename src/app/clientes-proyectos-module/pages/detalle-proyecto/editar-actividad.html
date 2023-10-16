@@ -1,0 +1,93 @@
+<h1 class="bS_Title">Editar Actividad</h1>
+<table class="full-width" cellspacing="1">
+    <tr>
+        <td>
+            <mat-form-field appearance="outline">
+                <mat-label>Titulo de Actividad</mat-label>
+                <input matInput type="text" name="tiempoInicio" [(ngModel)]="actividad.nombre">
+            </mat-form-field>
+        </td>
+        <td>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label *ngIf="cliProySeleccionado.nombreCliente">{{cliProySeleccionado.nombreCliente}}</mat-label>
+                <mat-label *ngIf="cliProySeleccionado.nombreCliente == null">Cliente / Proyecto</mat-label>
+                <select matNativeControl
+                        [(ngModel)]="proyectoSeleccionado"
+                        (ngModelChange)="cambiaClienteProyecto()"
+                >
+                  <option value="" selected>Selecciona un proyecto</option>
+                  <optgroup *ngFor="let cliente of clientesProyecto" [label]="cliente.razon_social">
+                    <option *ngFor="let proyecto of cliente.proyectos" [value]="[cliente.razon_social,proyecto._id, cliente.id]">
+                      {{proyecto.nombre}}
+                    </option>
+                  </optgroup>
+                </select>
+              </mat-form-field>
+        <td>
+            <mat-form-field class="full-width date" appearance="outline">
+                <mat-label>Fecha</mat-label>
+                <input matInput
+                  [matDatepicker]="picker"
+                  [(ngModel)]="actividad.fecha" name="fecha">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <mat-form-field appearance="outline">
+                <mat-label>Inicio</mat-label>
+                <input 
+                matInput 
+                type="time" 
+                name="tiempoInicio" 
+                [(ngModel)]="actividad.tiempoInicio"
+                (ngModelChange)="restaTiempos()">
+            </mat-form-field>
+        </td>
+        <td>
+            <mat-form-field appearance="outline">
+                <mat-label>Fin</mat-label>
+                <input matInput 
+                type="time" 
+                name="tiempoFinal"
+                [(ngModel)]="actividad.tiempoFinal"
+                (ngModelChange)="restaTiempos()">
+            </mat-form-field></td>
+        <td>
+            <mat-form-field appearance="outline" class="total">
+                <mat-label>Total</mat-label>
+                <input matInput disabled type="text"
+                [value]="actividad.tiempoAcumulado.resHor + ':' + actividad.tiempoAcumulado.resMin + ':' + actividad.tiempoAcumulado.resSeg">
+            </mat-form-field>
+        </td>
+    </tr>
+</table>
+<div class="footer">
+    <button mat-raised-button
+        color="primary"
+        type="submit"
+        (click) = "editaActividad()"
+        >Guardar</button>
+</div>
+
+
+  <!-- <form #f="ngForm" class="formEdit" (ngSubmit)="editaActividad(f)">
+                        
+                        
+                        <mat-form-field appearance="outline">
+                            <mat-label>Titulo de actividad</mat-label>
+                            <input matInput 
+                              [(ngModel)]="element.nombre"
+                              name="nombre">
+                        </mat-form-field>
+
+                        
+
+                          <button mat-raised-button
+                          color="primary"
+                          type="submit">Guardar</button>
+                    </form> -->

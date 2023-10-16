@@ -1,0 +1,54 @@
+.userToolbar{
+    justify-content: space-between;
+}
+
+.titHeader{
+    font-size: 35px;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.graphClientesWrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.graphClientesWrapper .graphWrapper{
+    width: 35%;
+    padding: 0 7%;
+    box-sizing: border-box;
+}
+
+.graphClientesWrapper .graphWrapper .graph{
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
+    background-color: cadetblue;
+    margin: auto;
+}
+
+.graphClientesWrapper .clienteshWrapper{
+    width: 65%;
+}
+
+.graphClientesWrapper .clienteshWrapper .filtroWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1.5em;
+}
+
+.graphClientesWrapper .clienteshWrapper .filtroWrapper .dayPicker {
+    margin-right: 1em;
+}
+
+.graphClientesWrapper .clienteshWrapper .tarjetaCliente{
+    
+}
+
+.detalleProyecto{
+    padding-top: 35px;
+    display: block;
+}
+
+

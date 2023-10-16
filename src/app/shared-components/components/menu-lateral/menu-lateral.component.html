@@ -1,0 +1,74 @@
+<mat-toolbar class="menuHeader">
+    <div class="nNumen">
+        <svg xmlns="http://www.w3.org/2000/svg" width="37.478" height="23.315" viewBox="0 0 37.478 23.315"><path d="M337.3,457.144a1.7,1.7,0,0,1-1.469-.9l-10.137-19.2h0a2.495,2.495,0,0,0-4.208-.54l-6.928,7.634V439.4h-.018c0-.007,0-.011,0-.017a4.616,4.616,0,0,0-4.6-4.618h-9.392v.921h.419a1.6,1.6,0,0,1,1.6,1.6h0v20.792l.726-.007a1.7,1.7,0,0,0,1.207-.535l0,.01,9.846-11.806a1.6,1.6,0,0,1,2.566.276l5.857,11.087h0a1.837,1.837,0,0,0,1.58.97l13.676.005v-.934Z" transform="translate(-300.547 -434.769)" fill="#cecc00"/></svg>
+    </div>
+    <span>Intranet Numen</span>
+</mat-toolbar>
+
+<div class="menuBody">
+    <mat-nav-list>
+
+        <a  class="menuOpt" [ngClass]="{'active': pagina === ''}"
+            (click)="navigate('/')"
+            disabled
+            mat-list-item>
+            <mat-icon class="menuIcon" mat-list-icon>notifications</mat-icon>
+            <span>Avisos</span>
+        </a>
+
+        <a  class="menuOpt" [ngClass]="{'active': pagina === 'actividades'}"
+            (click)="navigate('/actividades')"
+            mat-list-item>
+            <mat-icon class="menuIcon" mat-list-icon>note_add</mat-icon>
+            <span>Actividades Asignadas</span>
+         </a>
+    
+
+        <a  class="menuOpt"
+            disabled
+            [ngClass]="{'active': pagina === ''}"
+            (click)="navigate('/')"
+            mat-list-item>
+            <mat-icon class="menuIcon" mat-list-icon >perm_contact_calendar</mat-icon>
+            <span>Asistencia a estudio</span>
+        </a>
+
+        <a  class="menuOpt"
+            disabled
+            [ngClass]="{'active': pagina === ''}"
+            (click)="navigate('/')"
+            mat-list-item>
+            <mat-icon class="menuIcon" mat-list-icon >event_available</mat-icon>
+            <span>Agenda de reuniones</span>
+        </a>
+
+        <a  class="menuOpt"
+            *ngIf="user.rol == 'admin'"
+            [ngClass]="{'active': pagina === 'clientes'}"
+            (click)="navigate('/clientes')"
+            mat-list-item>
+            <mat-icon class="menuIcon" mat-list-icon >groups</mat-icon>
+            <span>Clientes / Proyectos</span>
+        </a>
+
+
+
+        <a  class="menuOpt"
+            *ngIf="user.rol == 'admin'"
+            [ngClass]="{'active': pagina === 'colaboradores'}"
+            (click)="navigate('/colaboradores')"
+            mat-list-item>
+            <mat-icon class="menuIcon" mat-list-icon >bar_chart</mat-icon>
+            <span>Reportes</span>
+        </a>
+    
+    
+    </mat-nav-list>
+
+    <div class="menuFooter">
+        <img class="nmnLogo" src='../../../../assets/images/logoHder.svg'>
+        <div style="color: #b3b3b3; margin-top: 1em;">1.0.6</div>
+    </div>
+        
+    
+</div>
