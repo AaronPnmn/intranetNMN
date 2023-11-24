@@ -1,0 +1,90 @@
+
+
+<div class="semanaHeader">
+    <div class="weekSelectorWrapper">
+        <div class="weekSelector">
+            <!-- <button mat-mini-fab (click)="retrocederSemana()">
+                <mat-icon>arrow_back_ios_new</mat-icon>
+            </button> -->
+
+            <div class="btnsemanaSlc back" (click)="retrocederSemana()">
+                <mat-icon>arrow_back_ios_new</mat-icon>
+            </div>
+    
+            <div class="semanaContainer">
+                <div class="semana">Semana {{fechaSeleccionada | date:'w' }}</div>
+                <div class="periodo">{{diasEnSemana[0] | date:'dd MMM' }}  -  {{diasEnSemana[6] | date:'dd MMM' }}</div>
+            </div>
+    
+            <div class="btnsemanaSlc next" (click)="avanzarSemana()">
+                <mat-icon>arrow_forward_ios</mat-icon>
+            </div>
+            <!-- <button mat-mini-fab (click)="avanzarSemana()">
+                <mat-icon>arrow_forward_ios</mat-icon>
+            </button> -->
+        </div>
+        <button *ngIf="fechaAlterada === true" mat-icon-button (click)="regresarSemanaActual()">
+            <mat-icon>
+                history
+            </mat-icon>
+        </button>
+
+        <!-- <div class="acumuladoSemanalWrapper">
+            <div>Acumulado Semanal</div>
+            <div class="acumuladoTotal">{{acumuladoSemanal}}</div>
+        </div> -->
+    </div>
+
+    <!-- <mat-form-field appearance="outline" class="colaboradorSelect" *ngIf="rol === 'admin'">
+        <mat-label>Colaborador</mat-label>
+        <select matNativeControl 
+                (change)="cambiarColaborador()" 
+                [(ngModel)]="id_colaboradorSeleccionado" 
+                name="s">
+          <option *ngFor="let colaborador of _colaboradores; let i = index" [value]="colaborador.id">
+            {{colaborador.nombre}}
+            <div *ngIf="colaborador.id == id_colaboradorSeleccionado" class="acumuladoTotal">{{id_colaboradorSeleccionado}}</div>
+          </option>
+        </select>
+      </mat-form-field>  -->
+
+      <div class="colaboradorSelect">
+        <mat-form-field appearance="standard" *ngIf="rol === 'admin'">
+            <mat-select
+                    class="selectColaborador"
+                    matNativeControl 
+                    (selectionChange)="cambiarColaborador()" 
+                    [(ngModel)]="usuarioIndx">
+                    <mat-select-trigger class="cajaSlcCol">
+                            <div class="imgCol">
+                                <img src='{{ "../../../../assets/images/avatar_" + _colaboradores[usuarioIndx].id + ".jpg" }}' alt="">
+                                <div class="box">
+                                    <!-- <div>{{_colaboradores}}</div> -->
+                                    <div class="colName">{{_colaboradores[usuarioIndx].nombre | titlecase}}</div>
+                                    <div class="acumuladoBox"><span>Acumulado Semanal:</span>{{acumuladoSemanal}}</div>
+                                </div>
+                            </div>
+                    </mat-select-trigger>
+              <mat-option *ngFor="let colaborador of _colaboradores; let i = index" [value]="i">
+                <img src='{{ "../../../../assets/images/avatar_" + _colaboradores[i].id + ".jpg" }}' width="45.5"/>
+                <div class="nombreOpt">
+                    {{colaborador.nombre | titlecase}}
+                </div>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+</div>
+
+<div class="colaboradorWrapper">
+
+    <app-dia-semana 
+        (propagar)="procesaPropagar($event)"
+        *appRecarga="reloadSemana"
+        [diasEnSemana]='diasEnSemana'
+        [diaActual]='diaActual'
+        [fechaSeleccionada]='fechaSeleccionada'
+        [colaboradorSeleccionado]='idUserSelected'
+    ></app-dia-semana>
+
+</div>

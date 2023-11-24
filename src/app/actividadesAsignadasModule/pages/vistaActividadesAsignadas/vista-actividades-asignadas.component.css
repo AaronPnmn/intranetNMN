@@ -1,0 +1,68 @@
+.actHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    font-family: 'Roboto Slab';
+}
+
+.userToolbar{
+    justify-content: space-between;
+}
+
+.actHeader .titHeader{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.actHeader .acumuladosWrapp{
+    display: flex;
+    text-align: center;
+}
+
+.actHeader .acumuladosWrapp .acumulado{
+    background-color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+}
+
+.tabActividades{
+
+}
+
+.tabActividades [role="tab"]{
+    height: 2.3rem;
+    opacity: 1;
+}
+
+
+.tabActividades [role="tab"].mat-tab-label-active .mat-tab-label-content {
+    color: black;
+}
+
+.tabActividades [role="tab"] .mat-tab-label-content {
+    font-size: 20px;
+}
+
+
+
+.actHeader .acumuladosWrapp .acumulado .tit1{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.actHeader .acumuladosWrapp .acumulado .tit2{
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.actHeader .acumuladosWrapp .acumulado .acumuladoDiario{
+    color: #F35162;
+}
+
+.actHeader .acumuladosWrapp .acumulado .acumuladoDiario,
+.actHeader .acumuladosWrapp .acumulado .acumuladoSemanal{
+    font-size: 23px;
+    font-weight: 600;
+    margin-top: 15px;
+}

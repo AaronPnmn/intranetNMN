@@ -1,0 +1,85 @@
+{
+    "data": {
+        "_id": "6536b132c3a034fb22df2bcf",
+        "registros": [
+            {
+                "_id": "6536b132c3a034fb22df2bd1",
+                "tiempoInicio": 1671733473264,
+                "tiempoFinal": 1671733478264,
+                "fecha": 1671733478264,
+                "semana": 43,
+                "mes": 10,
+                "anio": 2023,
+                "ordenPersonalizado": 1,
+                "createdAt": 1697846153573,
+                "autor": [
+                    {
+                        "_id": "63a4d7e40a0301ffe0c9090c",
+                        "name": "Miguel Angel Santos"
+                    }
+                ],
+                "cliente": [
+                    {
+                        "_id": "63b76578e7138a3a87046b02",
+                        "razon_social": "NUMEN DIGITAL"
+                    }
+                ],
+                "proyecto": [
+                    {
+                        "_id": "63d85deaac3c352e02468a0a",
+                        "nombre": "nmn_Actividades"
+                    }
+                ],
+                "colaborador": [
+                    {
+                        "_id": "63a4d7e40a0301ffe0c9090c",
+                        "name": "Miguel Angel Santos"
+                    }
+                ],
+                "nombre": "Downgrade NodeJS Plesk",
+                "descripcion": "",
+                "prioridadAlta": false,
+                "actividad": "6536b132c3a034fb22df2bcf"
+            },
+            {
+                "_id": "6536b5f5d6b9554a1fdcd4bf",
+                "tiempoInicio": 1698077700000,
+                "tiempoFinal": 1698097700000,
+                "fecha": 1698040800134,
+                "semana": 43,
+                "mes": 10,
+                "anio": 2023,
+                "ordenPersonalizado": null,
+                "createdAt": 1697846153573,
+                "autor": [
+                    {
+                        "_id": "63a4d7e40a0301ffe0c9090c",
+                        "name": "Miguel Angel Santos"
+                    }
+                ],
+                "cliente": [
+                    {
+                        "_id": "63b76578e7138a3a87046b02",
+                        "razon_social": "NUMEN DIGITAL"
+                    }
+                ],
+                "proyecto": [
+                    {
+                        "_id": "63d85deaac3c352e02468a0a",
+                        "nombre": "nmn_Actividades"
+                    }
+                ],
+                "colaborador": [
+                    {
+                        "_id": "63a4d7e40a0301ffe0c9090c",
+                        "name": "Miguel Angel Santos"
+                    }
+                ],
+                "nombre": "Downgrade NodeJS Plesk",
+                "descripcion": "",
+                "prioridadAlta": false,
+                "actividad": "6536b132c3a034fb22df2bcf"
+            }
+        ]
+    }
+}

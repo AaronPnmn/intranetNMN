@@ -1,0 +1,197 @@
+.actividad{
+    width: 95%;
+    box-sizing: border-box;
+    margin: 0em auto 0.6em;
+    display: flex;
+    cursor: pointer;
+    padding: 0;
+    justify-content: space-between;
+    /* min-height: 3rem; */
+    border: 1px solid #E2E7EE;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.actividad.tarjetaExtendida{
+    position: relative;
+    border-color: var(--azul);
+}
+
+/* .actividad.tarjetaExtendida .moveWrap{
+    border-color: var(--azul);
+} */
+
+.actividad.tarjetaExtendida::before{
+    content: '';
+    position: absolute;
+    width: 2.5%;
+    height: 100%;
+    background-color: var(--azul);
+    border-radius: 3px 0 0 3px;
+    left: 0;
+    top: 0;
+}
+
+.actividad:hover{
+    -webkit-box-shadow: 0px 2px 8px 1px rgba(211,224,245,1);
+    -moz-box-shadow: 0px 2px 8px 1px rgba(211,224,245,1);
+    box-shadow: 0px 2px 8px 1px rgba(211,224,245,1);
+    transition: box-shadow .2s;
+}
+
+
+.actividad .headAct .logoSec{
+    width: 20%;
+    padding-left: 3.5%;
+    display: flex;
+    max-width: 2rem;
+}
+
+.actividad .infoWrapper{
+    /* display: flex; */
+    width: 91.4%;
+}
+
+.actividad .headAct{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 7px 0 5px;
+}
+
+.actividad .moveWrap{
+    width: 8.6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 4px 4px 0;
+    cursor: grab;
+    border-left: 1px solid #E2E7EE;
+}
+
+.actividad .moveWrap:hover{
+    background-color: var(--azul);
+}
+
+.actividad .moveWrap:active{
+    cursor: grabbing;
+}
+
+.actividad .moveWrap mat-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    width: 100%;
+    color: #BCC8CF;
+}
+
+.actividad .moveWrap:hover mat-icon{
+    color: var(--verde);
+}
+
+.actividad .headAct .textWrap{
+    width: 72%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.actividad .logoSec img{
+    width: 100%;
+}
+
+.actividad .logoSec .logoCliente{
+    height: 2.5em;
+    background-color: #d2d9e3;
+    width: 2.5em;
+    border-radius: 100%;
+    margin: auto;
+    background-size: contain;
+    background-position: center;
+}
+
+
+
+.actividad .actividadLabel{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: 500;
+    color: #354052;
+    font-size: 12.5px;
+    line-height: 13px;
+}
+
+.actividad .timeLabel.enCurso{
+    color: #28a745;
+    font-style: italic;
+    font-weight: 500;
+    animation: breathOpacity 1.5s ease-out infinite normal;
+}
+
+.actividad .timeLabel.concluida{
+    display: flex;
+    justify-content: space-between;
+}
+
+.actividad .timeLabel.concluida .tiempoTotal{
+    font-style: normal;
+    color: #757E80;
+    font-weight: 500;
+    font-size: 12.3px;
+}
+
+.actividad .timeLabel.enCurso .tiemposInicioFin{
+ display: none;
+ 
+}
+
+.actividad .timeLabel.concluida .tiemposInicioFin{
+    font-size: 11.8px;
+    font-weight: 300;
+    color: #757E80;
+}
+
+.actividad .actividadLabel.prioridadAlta{
+    color: #dc3545;
+}
+
+.actividad .actividadLabel.concluida{
+    
+}
+
+.actividad .registrosContainer{
+    background-color: #F8F9FB;
+    border-radius: 0 0 0 4px;
+}
+
+.actividad .registrosContainer .registroRow{
+    display: flex;
+    justify-content: space-between;
+    width: 72%;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-left: auto;
+    padding-bottom: 2px;
+}
+
+.actividad .registrosContainer .registroRow:first-child{
+    padding-top: 5px;
+}
+
+.actividad .registrosContainer .registroRow:last-child{
+    padding-bottom: 5px;
+}
+
+.actividad .registrosContainer .registroRow .tiemposInicioFin{
+    font-size: 11.8px;
+    font-weight: 300;
+    color: #757E80;
+}
+
+.actividad .registrosContainer .registroRow .tiempoTotal{
+    font-style: normal;
+    color: #757E80;
+    font-weight: 500;
+    font-size: 12.3px;
+}

@@ -1,0 +1,152 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+
+
+.mat-form-field-appearance-standard .mat-form-field-underline {
+  display: none;
+}
+
+.userToolbar {
+  justify-content: flex-end;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.mat-form-field-infix {
+  display: flex !important;
+}
+
+.colaboradorSelect .mat-form-field-wrapper {
+  padding-bottom: 0;
+  margin-right: 20px !important;
+}
+
+.userToolbar .userButton {
+  display: flex;
+  align-items: center;
+}
+
+.userToolbar .userButton span {
+  font-size: 15px;
+  margin-left: 0.5em;
+}
+
+.bg-princ {
+  background-color: #F7F8FA !important;
+}
+
+.bg-white {
+  background-color: #FFF !important;
+}
+
+.main-container {
+  display: flex;
+  min-height: 100%;
+  position: relative;
+}
+
+app-side-bar-nav {
+  width: 100px;
+  height: 100%;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  -webkit-box-shadow: 0px 0px 12px 0px rgba(204,204,204,1);
+  -moz-box-shadow: 0px 0px 12px 0px rgba(204,204,204,1);
+  box-shadow: 0px 0px 12px 0px rgba(204,204,204,1);
+}
+
+.view {
+  box-sizing: border-box;
+  padding: 35px 3%;
+  width: calc(100% - 100px);
+  background-color: #F7F8FA;
+  margin-left: 100px;
+}
+
+
+
+.tabActividades .mat-tab-labels {
+  width: 26%;
+}
+
+
+.menuOpt .mat-list-item-content {
+  padding-left: 30px !important;
+
+}
+
+
+
+.filtroWrapper .mat-form-field-infix,
+.filtroWrapper .dayPicker .mat-form-field-wrapper {
+  padding: 0;
+}
+
+.graphClientesWrapper .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  margin: 0;
+}
+
+.graphClientesWrapper .mat-expansion-panel-header-title,
+.graphClientesWrapper .mat-expansion-panel-header-description {
+  align-items: center;
+  width: 45%;
+}
+
+.graphClientesWrapper .mat-expansion-panel-header-description .dos {
+  display: flex;
+  align-items: center;
+}
+
+.graphClientesWrapper .mat-expansion-panel-body {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+
+.tarjetaCliente .mat-expansion-panel {
+  border-radius: 0 !important;
+}
+
+.tarjetaCliente:first-child .mat-expansion-panel {
+  border-top-right-radius: 4px !important;
+  border-top-left-radius: 4px !important;
+}
+
+.tarjetaCliente:last-child .mat-expansion-panel {
+  border-bottom-right-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+}
+
+.date .mat-form-field-infix {
+  padding: 0.1em 0 0.1em 0 !important;
+}
+
+.total .mat-form-field-infix input {
+  color: #000;
+}
+
+
+@media (max-height: 650px) {
+
+
+}
+
+
+:root {
+  --azul: #174C7B;
+  --verde: #CECC00;
+}

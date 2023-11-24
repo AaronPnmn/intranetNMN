@@ -1,0 +1,209 @@
+{
+    "data": [
+        {
+            "_id": "6536b132c3a034fb22df2bcf",
+            "registros": [
+                {
+                    "_id": "6536b132c3a034fb22df2bd1",
+                    "tiempoInicio": 1698075900000,
+                    "tiempoFinal": 1698077700000,
+                    "fecha": 1698040800134,
+                    "semana": 43,
+                    "mes": 10,
+                    "anio": 2023,
+                    "ordenPersonalizado": null,
+                    "createdAt": 1697846153573,
+                    "autor": [
+                        {
+                            "_id": "63a4d7e40a0301ffe0c9090c",
+                            "name": "Miguel Angel Santos"
+                        }
+                    ],
+                    "cliente": [
+                        {
+                            "_id": "63b76578e7138a3a87046b02",
+                            "razon_social": "NUMEN DIGITAL"
+                        }
+                    ],
+                    "proyecto": [
+                        {
+                            "_id": "63d85deaac3c352e02468a0a",
+                            "nombre": "nmn_Actividades"
+                        }
+                    ],
+                    "colaborador": [
+                        {
+                            "_id": "63a4d7e40a0301ffe0c9090c",
+                            "name": "Miguel Angel Santos"
+                        }
+                    ],
+                    "nombre": "Misma actividad - misma fecha",
+                    "descripcion": "",
+                    "prioridadAlta": false,
+                    "actividad": "6536b132c3a034fb22df2bcf"
+                },
+                {
+                    "_id": "6536b5f5d6b9554a1fdcd4bf",
+                    "tiempoInicio": 1698077700000,
+                    "tiempoFinal": 1698097700000,
+                    "fecha": 1698040800134,
+                    "semana": 43,
+                    "mes": 10,
+                    "anio": 2023,
+                    "ordenPersonalizado": null,
+                    "createdAt": 1697846153573,
+                    "autor": [
+                        {
+                            "_id": "63a4d7e40a0301ffe0c9090c",
+                            "name": "Miguel Angel Santos"
+                        }
+                    ],
+                    "cliente": [
+                        {
+                            "_id": "63b76578e7138a3a87046b02",
+                            "razon_social": "NUMEN DIGITAL"
+                        }
+                    ],
+                    "proyecto": [
+                        {
+                            "_id": "63d85deaac3c352e02468a0a",
+                            "nombre": "nmn_Actividades"
+                        }
+                    ],
+                    "colaborador": [
+                        {
+                            "_id": "63a4d7e40a0301ffe0c9090c",
+                            "name": "Miguel Angel Santos"
+                        }
+                    ],
+                    "nombre": "Misma actividad - misma fecha",
+                    "descripcion": "",
+                    "prioridadAlta": false,
+                    "actividad": "6536b132c3a034fb22df2bcf"
+                },
+                {
+                    "_id": "6536b132c3a034fb22df2bd1",
+                    "tiempoInicio": 1698274751000,
+                    "tiempoFinal": 1698077700000,
+                    "fecha": 1698192000000,
+                    "semana": 43,
+                    "mes": 10,
+                    "anio": 2023,
+                    "ordenPersonalizado": null,
+                    "createdAt": 1697846153573,
+                    "autor": [
+                        {
+                            "_id": "63a4d7e40a0301ffe0c9090c",
+                            "name": "Miguel Angel Santos"
+                        }
+                    ],
+                    "cliente": [
+                        {
+                            "_id": "63b76578e7138a3a87046b02",
+                            "razon_social": "NUMEN DIGITAL"
+                        }
+                    ],
+                    "proyecto": [
+                        {
+                            "_id": "63d85deaac3c352e02468a0a",
+                            "nombre": "nmn_Actividades"
+                        }
+                    ],
+                    "colaborador": [
+                        {
+                            "_id": "63a4d7e40a0301ffe0c9090c",
+                            "name": "Miguel Angel Santos"
+                        }
+                    ],
+                    "nombre": "Misma actividad diferente fecha",
+                    "descripcion": "",
+                    "prioridadAlta": false,
+                    "actividad": "6536b132c3a034fb22df2bcf"
+                },
+                {
+                    "_id": "6536b132c3a034fb22df2bd1",
+                    "tiempoInicio": 1698075900000,
+                    "tiempoFinal": 1698077700000,
+                    "fecha": 1698192000000,
+                    "semana": 43,
+                    "mes": 10,
+                    "anio": 2023,
+                    "ordenPersonalizado": null,
+                    "createdAt": 1697846153573,
+                    "autor": [
+                        {
+                            "_id": "63a4d7e40a0301ffe0c9090c",
+                            "name": "Miguel Angel Santos"
+                        }
+                    ],
+                    "cliente": [
+                        {
+                            "_id": "63b76578e7138a3a87046b02",
+                            "razon_social": "NUMEN DIGITAL"
+                        }
+                    ],
+                    "proyecto": [
+                        {
+                            "_id": "63d85deaac3c352e02468a0a",
+                            "nombre": "nmn_Actividades"
+                        }
+                    ],
+                    "colaborador": [
+                        {
+                            "_id": "63a4d7e40a0301ffe0c9090c",
+                            "name": "Miguel Angel Santos"
+                        }
+                    ],
+                    "nombre": "Registro Anidado",
+                    "descripcion": "",
+                    "prioridadAlta": false,
+                    "actividad": "6536b132c3a034fb22df2bcf"
+                }
+            ]
+        },
+        {
+            "_id": "6536b53cc3a034fb22df2be7",
+            "registros": [
+                {
+                    "_id": "6536b53cc3a034fb22df2be9",
+                    "tiempoInicio": 1698075900000,
+                    "tiempoFinal": 1698077700000,
+                    "fecha": 1698040800134,
+                    "semana": 43,
+                    "mes": 10,
+                    "anio": 2023,
+                    "ordenPersonalizado": null,
+                    "createdAt": 1697846153573,
+                    "autor": [
+                        {
+                            "_id": "63a4d7e40a0301ffe0c9090c",
+                            "name": "Miguel Angel Santos"
+                        }
+                    ],
+                    "cliente": [
+                        {
+                            "_id": "63b76578e7138a3a87046b02",
+                            "razon_social": "NUMEN DIGITAL"
+                        }
+                    ],
+                    "proyecto": [
+                        {
+                            "_id": "63d85deaac3c352e02468a0a",
+                            "nombre": "nmn_Actividades"
+                        }
+                    ],
+                    "colaborador": [
+                        {
+                            "_id": "63a4d7e40a0301ffe0c9090c",
+                            "name": "Miguel Angel Santos"
+                        }
+                    ],
+                    "nombre": "Registro solo",
+                    "descripcion": "",
+                    "prioridadAlta": false,
+                    "actividad": "6536b53cc3a034fb22df2be7"
+                }
+            ]
+        }
+    ]
+}

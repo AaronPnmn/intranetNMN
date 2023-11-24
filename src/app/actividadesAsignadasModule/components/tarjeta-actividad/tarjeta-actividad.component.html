@@ -1,0 +1,70 @@
+<!-- <div>{{actividad | json}}</div> -->
+<div class="actividad" matTooltip="{{actividad.nombre}}" (click)="abrirActividad(actividad)"  [ngClass]="{'tarjetaExtendida': !actividad.tarjetaOrigen}">
+    <div class="infoWrapper">
+      <div class="headAct">
+        <div class="logoSec">
+          <img [src]="imgCliente" alt="">
+        </div>
+        <div class="textWrap">
+          <div class="actividadLabel" 
+               [ngClass]="{
+                  'prioridadAlta' : actividad.prioridadAlta ,
+                  'concluida' : timeStatus !== 'EN CURSO' && timeStatus !== '00:00'
+                }"> {{actividad.nombre}} </div>
+    
+          <div class="timeLabel" [ngClass]="timeStatus === 'EN CURSO' ? 'enCurso' : 'concluida'">
+            
+            <!-- REGISTRO UNICO -->
+            <div class="tiemposInicioFin" *ngIf="registrosTiempo.length == 1">
+                {{registrosTiempo[0].inicio}} - {{registrosTiempo[0].fin}}
+            </div>
+            <div class="tiempoTotal" *ngIf="registrosTiempo.length == 1">
+              {{registrosTiempo[0].total}} 
+            </div>
+            <!-- REGISTRO UNICO -->
+  
+            <!-- REGISTRO MULTIPLE -->
+              <!--  -->
+            <div class="tiemposInicioFin" *ngIf="registrosTiempo.length > 1">
+              &nbsp;
+            </div>
+            <div class="tiempoTotal" *ngIf="registrosTiempo.length > 1">
+              {{totalRegistros}} 
+            </div>
+  
+  
+  
+            <!-- REGISTRO MULTIPLE -->
+            
+  
+            <!-- V1
+            <div class="tiemposInicioFin" *ngIf="timeStatus !== '00:00'">
+              {{ actividad.tiempoInicio | date:'hh:mm' }} - {{ actividad.tiempoFinal | date:'hh:mm' }}
+            </div>
+            <div class="tiemposInicioFin" *ngIf="timeStatus == '00:00'">
+              --:--
+            </div>
+            <div class="tiempoTotal">
+              {{timeStatus}} 
+            </div>
+                  V1 -->
+          </div>
+        </div>
+      </div>
+      <div class="registrosContainer" *ngIf="registrosTiempo.length > 1">
+        <div class="registroRow" *ngFor="let registro of registrosTiempo;">
+          <div class="tiemposInicioFin">
+            {{registro.inicio}} - {{registro.fin}}
+          </div>
+          <div class="tiempoTotal">
+            {{registro.total}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="moveWrap">
+      <mat-icon>
+        drag_indicator
+      </mat-icon>
+    </div>
+  </div> 

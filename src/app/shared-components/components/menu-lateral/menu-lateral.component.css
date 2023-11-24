@@ -1,0 +1,56 @@
+.nNumen{
+    display: flex;
+    margin-right: 0.5em;
+}
+
+.menuHeader{
+    font-size: 16px;
+    width: 18em;
+    justify-content: center;
+    background-color: white;
+    border-bottom: 2px solid #D5D5D5;
+}
+
+.mat-list-base{
+    padding-top: 30px;
+}
+
+.menuIcon{
+    margin-right: 10px;
+}
+
+.menuOpt{
+    color: #6E7E98;
+}
+
+.menuOpt.active .menuIcon{
+    color: #CECC00;
+}
+
+.menuOpt.active{
+    color: black;
+    box-shadow: -7px 0px 0px 0px #cecc00 inset;
+    -webkit-box-shadow: -7px 0px 0px 0px #cecc00 inset;
+    -moz-box-shadow: -7px 0px 0px 0px #cecc00 inset;
+}
+
+.menuBody{
+    height: calc(100% - 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menuFooter{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3em;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menuFooter .nmnLogo{
+    width: 45%;
+    
+}

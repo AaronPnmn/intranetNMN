@@ -1,0 +1,35 @@
+.proyRow{
+    display: flex;
+    padding: 12px 24px;
+    cursor: pointer;
+}
+
+.proyRow:hover{
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.proyRow .nombreProy{
+    width: 53%;
+    padding-right: 1em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.proyRow .horasProy{
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.tarjetaColab{
+    padding: 10px 25px;
+}
+
+.imgColaborador{
+    height: 3rem;
+    width: 3rem;
+    background-size: cover;
+    border-radius: 100%;
+    margin-right: 18px;
+    background-repeat: no-repeat;
+    background-position: center;
+}

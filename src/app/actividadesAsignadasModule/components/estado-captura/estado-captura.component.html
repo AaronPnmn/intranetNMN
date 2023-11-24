@@ -1,0 +1,309 @@
+<div class="form-container">
+
+  <!-- Informacion -->
+
+  <div class="secForm">
+    <div class="secSeparador">
+      <div class="linea"></div>
+      <div class="separadorLabel">Información</div>
+    </div>
+
+    <!-- Fecha y colaboradores -->
+    <div class="inputWrapper doble mb-05">
+      <mat-form-field class="nmn-FormField info" appearance="outline">
+        <mat-label>Fecha</mat-label>
+        <input matInput
+               disabled
+               [(ngModel)]="infolabels.fecha"
+               name="nombre">
+      </mat-form-field>
+  
+      <mat-form-field class="nmn-FormField info" appearance="outline">
+        <mat-label>Colaborador (es)</mat-label>
+        <input matInput
+               disabled
+               [(ngModel)]="infolabels.colaboradores"
+               name="nombre">
+      </mat-form-field>
+    </div>
+
+    <!-- Cliente/ Proyecto -->
+    <mat-form-field class="nmn-FormField mb-05 info" appearance="outline">
+      <mat-label>Cliente/Proyecto</mat-label>
+      <input matInput
+             disabled
+             [(ngModel)]="infolabels.clientesProyecto"
+             name="nombre">
+    </mat-form-field>
+
+
+    <!-- Descripción -->
+    <mat-form-field class="nmn-FormField mb-05" appearance="outline">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput 
+                placeholder="Añadir descripción detallada">{{actividad | json}}</textarea>
+      <!-- <textarea matInput 
+                placeholder="Añadir descripción detallada"
+                [(ngModel)]="actividad.descripcion">{{actividad.descripcion}}</textarea> -->
+    </mat-form-field>
+  </div>
+
+  
+
+  <!-- <div class="infoBlock">
+      <div>{{actividad.cliente[0].razon_social}} - {{actividad.proyecto[0].nombre}}</div>
+      <div>Creada por: {{actividad.autor[0].name}} </div>
+      <div>Fecha: {{ actividad.fecha | date:"dd/MM/yy" }} </div>
+  </div> -->
+
+  <!-- Registro de tiempo -->
+
+  <!-- <div class="secForm">
+    <div class="secSeparador">
+      <div class="linea"></div>
+      <div class="separadorLabel">Registro de tiempo</div>
+    </div>
+
+  </div> -->
+
+  <div class="secForm">
+    <div class="secSeparador">
+      <div class="linea"></div>
+      <div class="separadorLabel">Tiempo</div>
+    </div>
+
+    <!-- Registro Unico  -->
+    <div class="inputWrapper tiempo" *ngIf="actividad.registros?.length === 1">
+      <mat-form-field appearance="outline" class="nmn-FormField">
+        <mat-label>Inicio</mat-label>
+        <input matInput
+        type="time"
+        
+        (change)="restaTiempos()"
+        name="tiempoInicio">
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="nmn-FormField">
+        <mat-label>Fin</mat-label>
+        <input matInput
+        type="time"
+        
+        (change)="restaTiempos()"
+        name="tiempoFinal">
+      </mat-form-field>
+  
+      <div class="totalWrapper">
+        <div class="label">Tiempo Total:</div>
+        <div class="tiempo">{{tiempoAcumulado.resHor + ':' + tiempoAcumulado.resMin + ':' + tiempoAcumulado.resSeg}}</div>
+      </div>
+    </div>
+
+    <!-- Varios registros  -->
+    <div class="registrosContainer lista" *ngIf="actividad.registros?.length !== 1">
+      <div class="tablaRegistros">
+        <div class="headerTotal">
+          <div class="titulo">Registros diarios</div>
+          <div class="acumuladorContainer">
+            <div class="label">Tiempo total general</div>
+            <div class="tiempo">{{tiempoTotalActividad}}</div>
+          </div>
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel class="regInd" *ngFor="let reg of registrosPorDia let i = index">
+            <!-- CABECERA LISTA DE REGISTROS -->
+            <mat-expansion-panel-header>
+              <div class="labelFecha">{{reg.fecha | date:"dd/MM/yy"}}</div>
+              <div class="acumuladorAnidado">
+                <div class="acumuladorContainer">
+                  <div class="label">Tiempo diario:</div>
+                  <div class="tiempo">{{reg.tiempoTotalDia}}</div>
+                </div>
+              </div>
+            </mat-expansion-panel-header>
+            <!-- /CABECERA LISTA DE REGISTROS -->
+
+            
+            <!-- REGISTROS -->
+              <!-- CABECERA DE REGISTRO -->
+            <div class="secForm agregarTiempoAnidado">
+          
+              <div class="inputWrapper tiempo">
+                <mat-form-field appearance="fill" class="nmn-FormField">
+                  <mat-label>Inicio:</mat-label>
+                  <input matInput
+                  type="time"
+                  (change)="restaTiempos()"
+                  name="tiempoInicio">
+                </mat-form-field>
+            
+                <mat-form-field appearance="fill" class="nmn-FormField">
+                  <mat-label>Fin:</mat-label>
+                  <input matInput
+                  type="time"
+                  (change)="restaTiempos()"
+                  name="tiempoFinal">
+                </mat-form-field>
+            
+                <div class="totalWrapper">
+                  <div class="label">Tiempo Parcial:</div>
+                  <div class="tiempo">{{tiempoAcumulado.resHor + ':' + tiempoAcumulado.resMin}}</div>
+                </div>
+
+                <!-- <button mat-icon-button type="button" color="primary">
+                  <mat-icon>add</mat-icon>
+                </button> -->
+                <button mat-flat-button color="primary">Guardar</button>
+            
+                <!-- <mat-form-field appearance="outline" class="edicionInput total">
+                  <mat-label>Total</mat-label>
+                  <input matInput
+                  type="text"
+                  disabled
+                  [value]="tiempoAcumulado.resHor + ':' + tiempoAcumulado.resMin + ':' + tiempoAcumulado.resSeg"
+                  name="tiempoAcumulado">
+                </mat-form-field> -->
+              </div>
+            </div>
+              <!-- /CABECERA DE REGISTRO -->
+              <!-- REGISTROS PARCIALES -->
+            <div class="tiempoAnidado" *ngFor="let regTime of reg.registrosTiempo let i = index">
+              <div class="uno">
+                <div class="vineta"></div>
+                <div class="tiempos">{{regTime.horaInicial | date:"hh:mm"}} - {{regTime.horaFinal | date:"hh:mm"}}</div>
+                <div class="TotalTiempos">{{regTime.tiempoTotal}}</div>
+              </div>
+              <div class="dos">
+                <button mat-icon-button type="submit" color="primary" (click)="editarRegistroTiempo(primerRegistro ,regTime)">
+                  <mat-icon>edit_outline</mat-icon>
+                </button>
+                <button class="delete" mat-icon-button type="submit" color="primary">
+                  <mat-icon>delete_outline</mat-icon>
+                </button>
+              </div>
+            </div>
+              <!-- /REGISTROS PARCIALES -->
+            <!-- /REGISTROS -->
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- CheckList -->
+    <div class="secForm">
+      <div class="secSeparador">
+        <div class="linea"></div>
+        <div class="separadorLabel">Check List</div>
+      </div>
+    
+      <!-- <div *ngIf=" actividad.lista.length != 0" class="listWrapp">
+        <mat-selection-list>
+          <div class="optionCheckWrapp" *ngFor="let dato of actividad.lista; let i = index">
+            <mat-list-option class="form-check" [ngClass]="{'checked': dato.estatus}" [value]="dato.estatus" [selected]="dato.estatus" (click)="checkElemento(i)">
+              {{ dato.contenido }}
+            </mat-list-option>
+            <button mat-icon-button class="btnEliminarCheck" (click)="eliminarElemento(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-selection-list>
+      </div> -->
+    
+      <form class="agregarCheckWrapp" (ngSubmit)="agregarCheckList()">
+        <mat-form-field class="check-FormField" appearance="outline">
+          <mat-label>Agregar Elemento</mat-label>
+          <input 
+            matInput 
+            [(ngModel)]="nuevo.contenido"
+            name="contenido">
+  
+          <button mat-icon-button type="submit" color="primary">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-form-field>
+    
+        <div class="checkList-2">
+          
+        </div>
+      </form>
+    </div>
+
+
+  <!-- <div *ngIf=" actividad.lista.length != 0" class="listWrapp">
+
+      <mat-selection-list>
+
+        <div class="optionCheckWrapp" *ngFor="let dato of actividad.lista; let i = index">
+          <mat-list-option class="form-check" [ngClass]="{'checked': dato.estatus}" [value]="dato.estatus" [selected]="dato.estatus" (click)="checkElemento(i)">
+            {{ dato.contenido }}
+          </mat-list-option>
+          <button mat-icon-button class="btnEliminarCheck" (click)="eliminarElemento(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+  
+      </mat-selection-list>
+
+  </div> -->
+
+
+  <!-- <form class="agregarCheckWrapp" (ngSubmit)="agregarCheckList()">
+    <mat-form-field class="checkList-1" appearance="standard">
+      <mat-label>Agregar Elemento</mat-label>
+      <input 
+        matInput 
+        [(ngModel)]="nuevo.contenido"
+        name="contenido"
+      >
+    </mat-form-field>
+    <div class="checkList-2">
+      <button color="primary" [disabled]="nuevo.contenido == ''" mat-icon-button mat-mini-fab type="submit">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    
+  </form> -->
+
+
+  <!-- <div class="footer">
+    <button mat-raised-button (click)="llamarDialog()" color="warn">Eliminar Actividad</button>
+    <button *ngIf="buttonLabel === 'Iniciar'"
+            (click)="iniciarYcerrar(true)"
+            mat-raised-button color="accent"
+            [disabled]="tiempoInicio !== 0 && tiempoFinal !== 0">{{ buttonLabel }}</button>
+    <button *ngIf="buttonLabel === 'Detener'" (click)="iniciarYcerrar(false)" mat-raised-button color="accent">{{ buttonLabel }}</button>
+    <button mat-raised-button color="primary" (click)="actualizarActividad(true, true)">Guardar</button>
+  </div> -->
+
+  <div class="footer">
+    
+
+    <div class="cont uno">
+      <div class="buttonWrapper">
+        <div class="btnAccion" matTooltip="Eliminar"><mat-icon>delete_outline</mat-icon></div>
+        <div class="btnAccion" matTooltip="Duplicar"><mat-icon>content_copy</mat-icon></div>
+        <div class="btnAccion" matTooltip="Editar"><mat-icon>edit</mat-icon></div>
+        <div class="btnAccion" matTooltip="Continuar Tarea"><mat-icon>turn_right</mat-icon></div>
+      </div>
+    </div>
+
+    <div class="cont dos">
+      <mat-slide-toggle class="example-margin" color="warn" name="prioridadAlta">Prioridad alta</mat-slide-toggle>
+      <div class="botones">
+        <button mat-raised-button
+        
+        color="accent"
+        type="submit">Guardar</button>
+  
+        <button mat-raised-button
+        
+        color="basic"
+        type="submit"
+        class="button2">Iniciar</button>
+      </div>
+    </div>
+
+  </div>
+</div>

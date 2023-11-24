@@ -1,0 +1,106 @@
+.sidebarInner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.sidebarInner .logoCont{
+    padding: 1rem 1.2rem;
+}
+
+.sidebarInner .logoCont img{
+    width: 100%;    
+}
+
+.sidebarInner .navCont{
+    
+}
+
+.sidebarInner .navCont .navButton{
+    text-align: center;
+    padding: 0.5rem;
+    height: 3.3rem;
+    width: 3.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.6rem auto;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.sidebarInner .navCont .navButton:hover{
+    border: 1px solid #BCC8CF;
+}
+
+.sidebarInner .navCont .navButton.active{
+    background-color: #BCC8CF;
+}
+
+.sidebarInner .navCont .navButton.active svg{
+    fill: #fff;
+}
+
+.sidebarInner .navCont .navButton.active svg path{
+    stroke: #fff;
+}
+
+.sidebarInner .navCont .navButton svg{
+    fill: #BCC8CF;
+    width: 30px !important;
+}
+
+.sidebarInner .navCont .navButton svg path{
+    stroke: #BCC8CF;
+
+}
+
+.sidebarInner .userCont{
+    padding: 1rem 0;
+
+}
+
+.sidebarInner .userButton{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 100%;
+    margin: auto;
+    background-size: contain;
+    background-position: center;
+    cursor: pointer;
+}
+
+.sidebarInner .btnSalir{
+    
+    width: 2rem;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.sidebarInner .btnSalir svg{
+    width: 85%;
+    cursor: pointer;
+
+}
+
+.sidebarInner .btnSalir svg path{
+    
+
+}
+
+
+@media (max-height: 650px) {
+
+    .sidebarInner .navCont .navButton svg{
+        width: 25px !important;
+    }
+
+    .sidebarInner .navCont .navButton{
+        padding: 0.6rem;
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+  
+}

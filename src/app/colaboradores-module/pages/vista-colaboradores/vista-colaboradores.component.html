@@ -1,0 +1,103 @@
+<!-- Primer Sidenav -->
+
+<mat-sidenav-container fullscreen> 
+
+
+
+    <mat-sidenav-content >
+        <!-- Segundo Sidenav -->
+        <mat-sidenav-container fullscreen>
+            
+            <!-- Drawer Menu -->
+            <mat-sidenav mode="over" #menuDrawer> 
+                <app-menu-lateral [pagina]="'colaboradores'"></app-menu-lateral>
+            </mat-sidenav>
+            <!-- Drawer Menu -->
+            
+
+            <mat-sidenav-content class="bg-princ" >
+                <mat-toolbar class="userToolbar bg-white">
+                    <button mat-icon-button
+                            color="primary"
+                            (click)="menuDrawer.toggle()">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                    <div class="titHeader">Colaboradores</div>
+                    <button mat-button class="userButton" [matMenuTriggerFor]="userMenu"> <div class="avatarUser" [style]="user.avatar"></div> {{user.name}}</button>
+                    <mat-menu #userMenu="matMenu">
+                        <button mat-menu-item (click)="navigate('/auth')">Cerrar Sesión</button>
+                    </mat-menu>
+                </mat-toolbar>
+
+
+                <div class="main-container" *ngIf="estatus == 'main'">
+
+                    <!-- Vista Actividades Asignadas -->
+                    <div class="actHeader">
+                        
+                    </div>
+
+                    <div class="graphClientesWrapper">
+                        
+                        
+                        <div class="clienteshWrapper">
+                            <form class="filtroWrapper" (ngSubmit)="imprimeClientes()">
+                                <mat-form-field class="dayPicker" appearance="outline">
+                                    <mat-label>Fecha inicio</mat-label>
+                                    <input matInput 
+                                      required
+                                      [matDatepicker]="picker1"
+                                      [(ngModel)]="fechaInicio" name="fechaInicial">
+                                    
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                                  </mat-form-field>
+
+                                  <mat-form-field class="dayPicker" appearance="outline">
+                                    <mat-label>Fecha final</mat-label>
+                                    <input matInput 
+                                      required
+                                      [matDatepicker]="picker2"
+                                      [(ngModel)]="fechaFin" name="fechaFinal">
+                                    
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker2></mat-datepicker>
+                                  </mat-form-field>
+                                  <button mat-raised-button color="primary" type="submit">Filtrar</button>
+                            </form>
+                            
+                            <mat-accordion>
+                                <app-tarjeta-colaborador 
+                                    [colaborador]="colaborador" *ngFor="let colaborador of colaboradores" 
+                                    class="tarjetaCliente"
+                                    (click)="openDetalleColaborador(colaborador)"></app-tarjeta-colaborador>
+                            </mat-accordion>
+                        </div>
+                    </div>
+                    
+                    <!-- Vista Actividades Asignadas -->
+
+                </div>
+
+                <app-detalle-colaborador 
+                    class="detalleProyecto" 
+                    *ngIf="estatus == 'detalle-proyecto'"
+                    (estatus)="cambiaEstatus($event)"
+                    [detalleColaborador]="detalleColaborador"
+                    ></app-detalle-colaborador>
+                
+            </mat-sidenav-content>
+
+        </mat-sidenav-container>
+        <!-- Segundo Sidenav -->
+    </mat-sidenav-content>
+
+    <!-- Drawer Captura -->
+    <mat-sidenav #drawer mode="over"  position="end">
+        
+    </mat-sidenav>
+    <!-- Drawer Captura -->
+
+</mat-sidenav-container>
+
+<!-- Primer Sidenav -->
